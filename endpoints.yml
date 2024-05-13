@@ -10,8 +10,16 @@
 # Server which runs your custom actions.
 # https://rasa.com/docs/rasa/custom-actions
 
-#action_endpoint:
-#  url: "http://localhost:5055/webhook"
+action_endpoint:
+  url: "http://localhost:5055/webhook"
+
+nlg:
+  type: rephrase
+  rephrase_all: true
+  llm:
+    type: "huggingface_hub"
+    repo_id: "google/gemma-1.1-2b-it"
+    task: "text-generation"
 
 # Tracker store which is used to store the conversations.
 # By default the conversations are stored in memory.
