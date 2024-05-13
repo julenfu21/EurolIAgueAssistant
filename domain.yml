@@ -8,6 +8,26 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - tell_name:
+      use_entities: true
+  - give_name:
+      use_entities: true
+  - repeat_name:
+      use_entities: true
+
+entities:
+  - name
+
+actions:
+  - action_receive_name
+  - action_say_name
+
+slots:
+  name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: name
 
 responses:
   utter_greet:
@@ -28,6 +48,9 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_ask_name:
+  - text: "What is your name?"
 
 session_config:
   session_expiration_time: 60
