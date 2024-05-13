@@ -113,3 +113,10 @@ nlu:
     - Jenny
     - Joseba
     - Julen
+
+- intent: check_euroleague_api
+  examples: |
+    - I want to check the Euroleague API.
+    - Please, return results from the Euroleague API.
+    - Euroleague API, please.
+    - Obtain results from the Euroleague API.

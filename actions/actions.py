@@ -1,35 +1,34 @@
 from typing import Any, Text, Dict, List
 
-# from euroleague_api.team_stats import TeamStats
+from euroleague_api.team_stats import TeamStats
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 
 
-# class ActionHelloWorld(Action):
-#
-#     # https://learning.rasa.com/conversational-ai-with-rasa/custom-actions/
-#     # https://www.youtube.com/watch?v=rvHg7N8ux2I
-#
-#     def name(self) -> Text:
-#         return "action_show_time"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#         # dispatcher.utter_message(text=f"{dt.datetime.now()}")
-#
-#         team_stats = TeamStats()
-#         df = team_stats.get_team_stats(
-#             endpoint='traditional'
-#         )
-#         short_df = df.head(2)[['teamRanking', 'team.name', 'pointsScored', 'twoPointersMade']]
-#
-#         #    teamRanking            team.name  pointsScored  twoPointersMade
-#         # 0            1  Skyliners Frankfurt          71.8             19.7
-#         # 1            2          Arka Gdynia          70.3             18.5
-#
-#         return []
+class ActionReturnEuroleagueApiValues(Action):
+
+    def name(self) -> Text:
+        return "action_return_euroleague_api_values"
+
+    def run(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+
+        team_stats = TeamStats(competition='E')
+        df = team_stats.get_team_stats(
+            endpoint='traditional'
+        )
+
+        team_name = "Baskonia Vitoria-Gasteiz"
+        desired_row = df[df['team.name'] == team_name]
+        games_played = desired_row['gamesPlayed'].iloc[0]  # 624
+        # dispatcher.utter_message(text=f"Games played by {team_name}: {games_played}")
+
+        return [SlotSet("team", team_name), SlotSet("amount", games_played)]
 
 
 class ActionReceiveName(Action):

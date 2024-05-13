@@ -39,3 +39,11 @@ stories:
     - action: action_receive_name
     - intent: repeat_name
     - action: action_say_name
+
+- story: euroleague api path
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: check_euroleague_api
+    - action: action_return_euroleague_api_values
+    - action: utter_games_played_by_baskonia

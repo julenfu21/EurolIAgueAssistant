@@ -14,13 +14,17 @@ intents:
       use_entities: true
   - repeat_name:
       use_entities: true
+  - check_euroleague_api
 
 entities:
   - name
+  - team
+  - amount
 
 actions:
   - action_receive_name
   - action_say_name
+  - action_return_euroleague_api_values
 
 slots:
   name:
@@ -28,6 +32,18 @@ slots:
     mappings:
       - type: from_entity
         entity: name
+
+  team:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: team
+
+  amount:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: amount
 
 responses:
   utter_greet:
@@ -51,6 +67,9 @@ responses:
 
   utter_ask_name:
   - text: "What is your name?"
+
+  utter_games_played_by_baskonia:
+  - text: "Games played by {team}: {amount}"
 
 session_config:
   session_expiration_time: 60
