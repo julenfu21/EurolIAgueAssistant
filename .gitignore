@@ -1,1 +1,4 @@
 .idea
+.rasa
+models
+tests
