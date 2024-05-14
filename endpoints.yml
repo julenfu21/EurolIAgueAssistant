@@ -15,7 +15,7 @@ action_endpoint:
 
 nlg:
   type: rephrase
-  rephrase_all: true
+  # rephrase_all: true
   llm:
     type: "huggingface_hub"
     repo_id: "google/gemma-1.1-2b-it"

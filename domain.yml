@@ -15,16 +15,22 @@ intents:
   - repeat_name:
       use_entities: true
   - check_euroleague_api
+  - request_game_metadata
+
 
 entities:
   - name
   - team
   - amount
+  - home_team
+  - away_team
+
 
 actions:
   - action_receive_name
   - action_say_name
   - action_return_euroleague_api_values
+
 
 slots:
   name:
@@ -44,6 +50,31 @@ slots:
     mappings:
       - type: from_entity
         entity: amount
+
+  home_team:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: home_team
+
+  away_team:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: away_team
+
+
+forms:
+  game_metadata_form:
+    # "If you do not want any of the required slots of a form to be filled when the intent is one from the list"
+    # ignored_intents:
+      # intent_1
+    required_slots:
+      - home_team
+      - away_team
+
 
 responses:
   utter_greet:
@@ -70,6 +101,17 @@ responses:
 
   utter_games_played_by_baskonia:
   - text: "Games played by {team}: {amount}"
+
+  # utter_ask_<form_name>_<slot_name>
+  utter_ask_game_metadata_form_home_team:
+  - text: "The information of which home team do you want to check?"
+
+  utter_ask_game_metadata_form_away_team:
+  - text: "The information of which away team do you want to check?"
+
+  utter_requested_game_metadata:
+    - text: "You asked for the following game: Home team: {home_team} || Away team: {away_team}"
+
 
 session_config:
   session_expiration_time: 60

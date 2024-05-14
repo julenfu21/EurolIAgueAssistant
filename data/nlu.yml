@@ -120,3 +120,10 @@ nlu:
     - Please, return results from the Euroleague API.
     - Euroleague API, please.
     - Obtain results from the Euroleague API.
+
+- intent: request_game_metadata
+  examples: |
+    - I would like to check the game metadata section. The home team is [Baskonia](home_team) and the away team [Valencia](away_team). 
+    - I want game metadata, please. Home team: [Baskonia](home_team); Away team: [Valencia](away_team)
+    - Game metadata. [Baskonia](home_team) - [Valencia](away_team)
+    - Check game metadata. [Baskonia](home_team) vs. [Valencia](away_team).

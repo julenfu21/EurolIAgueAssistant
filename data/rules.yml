@@ -11,3 +11,19 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+#- rule: Activate game metadata form
+#  steps:
+#    - intent: request_game_metadata
+#    - action: game_metadata_form
+#    - active_loop: game_metadata_form
+
+- rule: Activate game metadata form
+  steps:
+    - intent: request_game_metadata
+    - action: game_metadata_form
+    - active_loop: game_metadata_form
+    - slot_was_set:
+        - requested_slot: game_metadata_form
+    - active_loop: null
+    - action: utter_requested_game_metadata
