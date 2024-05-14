@@ -65,7 +65,9 @@ slots:
         # - active_loop: requested_api
 
   season:
-    type: text
+    type: float
+    min_value: 2000.0
+    max_value: 2023.0
     influence_conversation: true
     mappings:
       - type: from_entity
@@ -133,6 +135,12 @@ forms:
     required_slots:
       - home_team
       - away_team
+    
+  standings_form:
+    required_slots:
+      - competition
+      - season
+      - round
 
 
 responses:

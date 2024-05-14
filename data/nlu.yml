@@ -2,10 +2,6 @@ version: "3.1"
 
 nlu:
 
-- regex: season
-  examples: |
-    - /^(200\d|201\d|202[0123])$/
-
 - intent: give_competition
   examples: |
     - [Euroleague](competition)
@@ -37,6 +33,8 @@ nlu:
     - [2023](season)
     - [2002](season)
     - [2018](season)
+    - Season [2020](season), please
+    - Tell me about season [2008](season)
 
 - intent: give_round
   examples: |
@@ -45,6 +43,8 @@ nlu:
     - [13](round)
     - [23](round)
     - [34](round)
+    - I want to know aboot round [5](round)
+    - Tell me about round [7](round)
 
 
 - intent: greet

@@ -24,12 +24,16 @@ class ActionReturnRequestedStandings(Action):
     
             # Obtain competition from slots
             competition = tracker.get_slot(key="competition")
+            if competition == 'Euroleague':
+                competition = 'E'
+            else:
+                competition = 'U'
             season = tracker.get_slot(key="season")
             round = tracker.get_slot(key="round")
     
             # Obtain standings
             standings = Standings(competition=competition)
-            df = standings.get_standings(season=season, round=round)
+            df = standings.get_standings(season=season, round_number=round)
     
             # DEBUG PRINTS (se pueden quitar --> salen en la consola que ejecutas 'rasa run actions')
             print(df)
