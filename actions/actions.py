@@ -1,5 +1,6 @@
 from typing import Any, Text, Dict, List
 
+import rasa_sdk.events
 from euroleague_api.team_stats import TeamStats
 from euroleague_api.game_stats import GameStats
 
@@ -49,7 +50,7 @@ class ActionReturnRequestedGameMetadata(Action):
             text=f"Game result: \n {home_team_name}: {home_team_score} \n {away_team_name}: {away_team_score}"
         )
 
-        return []
+        return [SlotSet("home_team", None), SlotSet("away_team", None)]
 
 
 class ActionReturnEuroleagueApiValues(Action):
