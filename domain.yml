@@ -18,6 +18,8 @@ intents:
   - request_game_metadata
   - give_home_team
   - give_away_team
+  - competition
+  - api_slot
 
 
 entities:
@@ -26,6 +28,8 @@ entities:
   - amount
   - home_team
   - away_team
+  - competition
+  - api_slot
 
 
 actions:
@@ -36,6 +40,26 @@ actions:
 
 
 slots:
+
+  competition:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: competition
+        # conditions:
+        # - active_loop: competition
+  
+  api_slot:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: api_slot
+        # conditions:
+        # - active_loop: requested_api
+
+
+
+
   name:
     type: text
     mappings:
@@ -86,17 +110,13 @@ forms:
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Hey! I am a bot that can help you with Euroleague and Eurocup information. What competition do you want to know about?"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_which_api:
+  - text: "{competition} it is! What do you want to know about it, Standings, Team Stats, Player Stats or Game Stats?"
 
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
+  utter_standings:
+  - text: "The {api_slot} of {competition} are the following:"
 
   utter_goodbye:
   - text: "Bye"

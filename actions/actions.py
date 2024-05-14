@@ -7,6 +7,7 @@ from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 
 
+
 class ActionReturnRequestedGameMetadata(Action):
 
     def name(self) -> Text:

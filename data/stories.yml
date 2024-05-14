@@ -2,32 +2,18 @@ version: "3.1"
 
 stories:
 
-- story: happy path
+- story: standings_path
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+    - intent: greet
+    - action: utter_greet
+    - intent: competition
+    - slot_was_set:
+      - requested_slot: competition
+    - action: utter_which_api
+    - slot_was_set:
+      - requested_slot: api_slot
+    - intent: api_slot
+    - action: utter_standings
 
 - story: name path
   steps:
