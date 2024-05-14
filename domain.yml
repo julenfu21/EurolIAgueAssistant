@@ -18,8 +18,10 @@ intents:
   - request_game_metadata
   - give_home_team
   - give_away_team
-  - competition
-  - api_slot
+  - give_competition
+  - give_api
+  - give_season
+  - give_round
 
 
 entities:
@@ -30,6 +32,8 @@ entities:
   - away_team
   - competition
   - api_slot
+  - season
+  - round
 
 
 actions:
@@ -37,12 +41,14 @@ actions:
   - action_say_name
   - action_return_euroleague_api_values
   - action_return_requested_game_metadata
+  - action_return_requested_standings
 
 
 slots:
 
   competition:
     type: text
+    influence_conversation: true
     mappings:
       - type: from_entity
         entity: competition
@@ -51,11 +57,32 @@ slots:
   
   api_slot:
     type: text
+    influence_conversation: true
     mappings:
       - type: from_entity
         entity: api_slot
         # conditions:
         # - active_loop: requested_api
+
+  season:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: season
+        # conditions:
+        # - active_loop: season
+
+  round:
+    type: float
+    min_value: 0.0
+    max_value: 34.0
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: round
+        # conditions:
+        # - active_loop: round
 
 
 
@@ -115,8 +142,11 @@ responses:
   utter_which_api:
   - text: "{competition} it is! What do you want to know about it, Standings, Team Stats, Player Stats or Game Stats?"
 
-  utter_standings:
-  - text: "The {api_slot} of {competition} are the following:"
+  utter_season:
+  - text: "Which season do you want to know about? Just write the year the season starts. For example, 2023 for the last season."
+
+  utter_round:
+  - text: "Which round do you want to know about? **Limitation**: Depending on the season and competition, the number of rounds may vary."
 
   utter_goodbye:
   - text: "Bye"

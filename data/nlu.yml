@@ -2,14 +2,18 @@ version: "3.1"
 
 nlu:
 
-- intent: competition_slot
+- regex: season
+  examples: |
+    - /^(200\d|201\d|202[0123])$/
+
+- intent: give_competition
   examples: |
     - [Euroleague](competition)
     - I want to know about the [Euroleague](competition)
     - [Eurocup](competition)
     - I want to know about the [Eurocup](competition)
 
-- intent: api_slot
+- intent: give_api
   examples: |
     - [Game Stats](api_slot)
     - [Standings](api_slot)
@@ -27,6 +31,20 @@ nlu:
     - Check the [Game Stats](api_slot)
     - Check the [Player Stats](api_slot)
     - Check the [Team Stats](api_slot)
+
+- intent: give_season
+  examples: |
+    - [2023](season)
+    - [2002](season)
+    - [2018](season)
+
+- intent: give_round
+  examples: |
+    - [1](round)
+    - [2](round)
+    - [13](round)
+    - [23](round)
+    - [34](round)
 
 
 - intent: greet

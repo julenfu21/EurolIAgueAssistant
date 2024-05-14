@@ -6,14 +6,20 @@ stories:
   steps:
     - intent: greet
     - action: utter_greet
-    - intent: competition
+    - intent: give_competition
     - slot_was_set:
       - requested_slot: competition
     - action: utter_which_api
     - slot_was_set:
       - requested_slot: api_slot
-    - intent: api_slot
-    - action: utter_standings
+    - intent: give_api
+    - action: utter_season
+    - slot_was_set:
+      - requested_slot: season
+    - intent: give_season
+    - action: utter_round
+    - intent: give_round
+    - action: action_return_requested_standings
 
 - story: name path
   steps:

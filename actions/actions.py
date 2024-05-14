@@ -2,10 +2,45 @@ from typing import Any, Text, Dict, List
 
 from euroleague_api.game_stats import GameStats
 from euroleague_api.team_stats import TeamStats
+from euroleague_api.standings import Standings
+from euroleague_api.player_stats import PlayerStats
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 
+
+
+class ActionReturnRequestedStandings(Action):
+    
+        def name(self) -> Text:
+            return "action_return_requested_standings"
+    
+        def run(
+                self,
+                dispatcher: CollectingDispatcher,
+                tracker: Tracker,
+                domain: Dict[Text, Any]
+        ) -> List[Dict[Text, Any]]:
+    
+            # Obtain competition from slots
+            competition = tracker.get_slot(key="competition")
+            season = tracker.get_slot(key="season")
+            round = tracker.get_slot(key="round")
+    
+            # Obtain standings
+            standings = Standings(competition=competition)
+            df = standings.get_standings(season=season, round=round)
+    
+            # DEBUG PRINTS (se pueden quitar --> salen en la consola que ejecutas 'rasa run actions')
+            print(df)
+    
+            df2 = df[['position', 'gamesWon', 'gamesLost', 'club.name']].copy()
+
+            dispatcher.utter_message(
+            text=f"Standings for round {round} of the {season} season of the {competition}: \n {df2}"
+            )
+    
+            return [SlotSet("competition", None), SlotSet("season", None)]
 
 
 class ActionReturnRequestedGameMetadata(Action):
