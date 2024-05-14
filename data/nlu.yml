@@ -82,6 +82,7 @@ nlu:
     - extremly sad
     - so saad
     - so sad
+    - [BASKONIA VITORIA-GASTEIZ](home_team). i feel sad.
 
 - intent: bot_challenge
   examples: |
@@ -123,7 +124,25 @@ nlu:
 
 - intent: request_game_metadata
   examples: |
-    - I would like to check the game metadata section. The home team is [Baskonia](home_team) and the away team [Valencia](away_team). 
-    - I want game metadata, please. Home team: [Baskonia](home_team); Away team: [Valencia](away_team)
-    - Game metadata. [Baskonia](home_team) - [Valencia](away_team)
-    - Check game metadata. [Baskonia](home_team) vs. [Valencia](away_team).
+    - I would like to check the game metadata section. 
+    - I want game metadata, please.
+    - Game metadata.
+    - Check game metadata.
+#    - I would like to check the game metadata section. The home team is [Baskonia](home_team) and the away team [Valencia](away_team).
+#    - I want game metadata, please. Home team: [Baskonia](home_team); Away team: [Valencia](away_team)
+#    - Game metadata. [Baskonia](home_team) - [Valencia](away_team)
+#    - Check game metadata. [Baskonia](home_team) vs. [Valencia](away_team).
+
+- intent: give_home_team
+  examples: |
+    - [BASKONIA VITORIA-GASTEIZ](home_team)
+    - The home team is [BASKONIA VITORIA-GASTEIZ](home_team)
+    - Home team: [BASKONIA VITORIA-GASTEIZ](home_team)
+    - I want information about [BASKONIA VITORIA-GASTEIZ](home_team)
+
+- intent: give_away_team
+  examples: |
+    - [MACCABI PLAYTIKA TEL AVIV](away_team)
+    - The home team is [MACCABI PLAYTIKA TEL AVIV](away_team)
+    - Home team: [MACCABI PLAYTIKA TEL AVIV](away_team)
+    - I want information about [MACCABI PLAYTIKA TEL AVIV](away_team)

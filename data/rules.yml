@@ -18,12 +18,34 @@ rules:
 #    - action: game_metadata_form
 #    - active_loop: game_metadata_form
 
-- rule: Activate game metadata form
-  steps:
-    - intent: request_game_metadata
-    - action: game_metadata_form
-    - active_loop: game_metadata_form
-    - slot_was_set:
-        - requested_slot: game_metadata_form
-    - active_loop: null
-    - action: utter_requested_game_metadata
+#- rule: Activate game metadata form
+#  steps:
+#    - intent: request_game_metadata
+#    - action: game_metadata_form
+#    - active_loop: game_metadata_form
+#    - slot_was_set:
+#        - requested_slot: game_metadata_form
+#    - active_loop: null
+#    - action: utter_requested_game_metadata
+
+
+# EJEMPLO CON ACTIVACIÓN Y DESACTIVACIÓN
+#- rule: Activate game metadata form
+#  steps:
+#    - intent: request_game_metadata
+#    - action: game_metadata_form
+#    # The form should be activated after game_metadata_form was run.
+#    - active_loop: game_metadata_form
+#
+#- rule: Submit game metadata form
+#  condition:
+#  # Condition that form is active.
+#  - active_loop: game_metadata_form
+#  steps:
+#  # Form is deactivated
+#  - action: game_metadata_form
+#  - active_loop: null
+#  - slot_was_set:
+#    - requested_slot: null
+#  # The actions we want to run when the form is submitted.
+#  - action: utter_requested_game_metadata

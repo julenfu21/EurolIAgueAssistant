@@ -1,9 +1,55 @@
 from typing import Any, Text, Dict, List
 
 from euroleague_api.team_stats import TeamStats
+from euroleague_api.game_stats import GameStats
+
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
+
+
+class ActionReturnRequestedGameMetadata(Action):
+
+    def name(self) -> Text:
+        return "action_return_requested_game_metadata"
+
+    def run(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+
+        # Obtain home and away team names from slots
+        home_team_name = tracker.get_slot(key="home_team")
+        away_team_name = tracker.get_slot(key="away_team")
+
+        # Extract some metadata stats
+        game_stats = GameStats(competition='E')
+        metadata_df = game_stats.get_game_metadata_season(season=2023)
+        columns_to_extract = ['hometeam', 'awayteam', 'homescore', 'awayscore']
+        metadata_df_subset = metadata_df[columns_to_extract]
+
+        # Filter by team names and extract first match
+        home_team_condition = metadata_df_subset['hometeam'] == home_team_name
+        away_team_condition = metadata_df_subset['awayteam'] == away_team_name
+        metadata_df_subset = metadata_df_subset[home_team_condition & away_team_condition]
+        first_occurrence = metadata_df_subset.head(1)
+
+        # DEBUG PRINTS (se pueden quitar --> salen en la consola que ejecutas 'rasa run actions')
+        print(f'Home team: {home_team_name}')
+        print(f'Away team: {away_team_name}')
+        print(metadata_df_subset)
+
+        # Obtain match result
+        home_team_score = first_occurrence.iloc[0]['homescore']
+        away_team_score = first_occurrence.iloc[0]['awayscore']
+
+        dispatcher.utter_message(
+            text=f"Game result: \n {home_team_name}: {home_team_score} \n {away_team_name}: {away_team_score}"
+        )
+
+        return []
 
 
 class ActionReturnEuroleagueApiValues(Action):

@@ -16,6 +16,8 @@ intents:
       use_entities: true
   - check_euroleague_api
   - request_game_metadata
+  - give_home_team
+  - give_away_team
 
 
 entities:
@@ -30,6 +32,7 @@ actions:
   - action_receive_name
   - action_say_name
   - action_return_euroleague_api_values
+  - action_return_requested_game_metadata
 
 
 slots:
@@ -57,6 +60,9 @@ slots:
     mappings:
       - type: from_entity
         entity: home_team
+        # To change the slot value just when the form is active (avoid changing when unnecessary)
+        conditions:
+        - active_loop: game_metadata_form
 
   away_team:
     type: text
@@ -64,6 +70,8 @@ slots:
     mappings:
       - type: from_entity
         entity: away_team
+        conditions:
+        - active_loop: game_metadata_form
 
 
 forms:

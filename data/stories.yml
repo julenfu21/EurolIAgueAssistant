@@ -47,3 +47,21 @@ stories:
     - intent: check_euroleague_api
     - action: action_return_euroleague_api_values
     - action: utter_games_played_by_baskonia
+
+- story: interactive story 1
+  steps:
+    - intent: request_game_metadata
+    - action: game_metadata_form
+    # The form should be activated after game_metadata_form was run.
+    - active_loop: game_metadata_form
+    - slot_was_set:
+      - requested_slot: home_team
+    - slot_was_set:
+      - requested_slot: away_team
+    # Form is deactivated
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    # The actions we want to run when the form is submitted.
+    - action: utter_requested_game_metadata
+    - action: action_return_requested_game_metadata
