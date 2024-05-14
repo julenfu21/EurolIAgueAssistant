@@ -1,9 +1,7 @@
 from typing import Any, Text, Dict, List
 
-import rasa_sdk.events
-from euroleague_api.team_stats import TeamStats
 from euroleague_api.game_stats import GameStats
-
+from euroleague_api.team_stats import TeamStats
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
