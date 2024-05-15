@@ -52,6 +52,17 @@ nlu:
     - [Eurocup](competition)
     - I want to know about the [Eurocup](competition)
 
+- intent: give_api_section
+  examples: |
+   - [Standings](api_section)
+   - [Team Stats](api_section)
+   - I want to know about the [Standings](api_section)
+   - I want to know about the [Team Stats](api_section)
+   - Tell me about the [Standings](api_section)
+   - Tell me about the [Team Stats](api_section)
+   - Check the [Standings](api_section)
+   - Check the [Team Stats](api_section)
+
 # - intent: give_api
 #   examples: |
 #     - [Game Stats](api_slot)
@@ -71,19 +82,19 @@ nlu:
 #     - Check the [Player Stats](api_slot)
 #     - Check the [Team Stats](api_slot)
 
-- intent: request_standings_info
-  examples: |
-    - Standings
-    - I want to know about the Standings
-    - Tell me about the Standings
-    - Check the Standings
+#- intent: request_standings_info
+#  examples: |
+#    - Standings
+#    - I want to know about the Standings
+#    - Tell me about the Standings
+#    - Check the Standings
 
-- intent: request_team_stats_info
-  examples: |
-    - Team Stats
-    - I want to know about the Team Stats
-    - Tell me about the Team Stats
-    - Check the Team Stats
+#- intent: request_team_stats_info
+#  examples: |
+#    - Team Stats
+#    - I want to know about the Team Stats
+#    - Tell me about the Team Stats
+#    - Check the Team Stats
 
 - intent: give_season
   examples: |
@@ -136,6 +147,12 @@ nlu:
     - [Slask](team)
     - [Rytas](team)
 
+- intent: interrupt_form
+  examples: |
+    - I want to check other data
+    - Sorry, I meant to look for other kind of information.
+    - I prefer to look for other data
+    - I do not want to continue with this query.
 
 
 

@@ -6,20 +6,17 @@ intents:
   - affirm
   - deny
   - give_competition
-  - request_standings_info
-  - request_team_stats_info
+  - give_api_section
+#  - request_standings_info
+#  - request_team_stats_info
   # - request_...
   - give_season
   - give_round
   - give_team
   # - give_...
+  - interrupt_form
   - bot_challenge
 
-#  - check_euroleague_api
-#  - request_game_metadata
-#  - give_home_team
-#  - give_away_team
-#
 #  # - give_api
 #
 #  - give_team_stats
@@ -32,13 +29,13 @@ intents:
 
 entities:
   - competition
+  - api_section
   - season
   - round
   - team
 #  # - api_slot
 #
 #  # - team_stats_type
-#  - team
 
 
 actions:
@@ -53,25 +50,27 @@ slots:
 
   competition:
     type: text
-    influence_conversation: true
+    # influence_conversation: true
     mappings:
       - type: from_entity
         entity: competition
   
-#  api_slot:
-#    type: text
-#    influence_conversation: true
-#    mappings:
-#      - type: from_entity
-#        entity: api_slot
-#        # conditions:
-#        # - active_loop: requested_api
+  api_section:
+    type: categorical
+    influence_conversation: true
+    values:
+      - Standings
+      - Team Stats
+      # - other_categories (in API)
+    mappings:
+      - type: from_entity
+        entity: api_section
 
   season:
     type: float
     min_value: 2000.0
     max_value: 2023.0
-    influence_conversation: true
+    # influence_conversation: true
     mappings:
       - type: from_entity
         entity: season
@@ -82,7 +81,7 @@ slots:
     type: float
     min_value: 0.0
     max_value: 34.0
-    influence_conversation: true
+    # influence_conversation: true
     mappings:
       - type: from_entity
         entity: round
@@ -100,7 +99,7 @@ slots:
 
   team:
     type: text
-    influence_conversation: true
+    # influence_conversation: true
     mappings:
       - type: from_entity
         entity: team
@@ -180,11 +179,15 @@ responses:
 #  - text: "Do you want to check the stats for all seasons, one season, or a range of seasons?"
 
   # utter_team:
+  # utter_ask_<form_name>_<slot_name>
   utter_ask_team_stats_all_form_team:
   - text: "Which team do you want the stats of?"
 
   utter_goodbye:
   - text: "Bye"
+
+  utter_ask_interrupt_form:
+  - text: "Are you sure you want to interrupt the current query?"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."

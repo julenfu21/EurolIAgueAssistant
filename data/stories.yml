@@ -2,15 +2,23 @@ version: "3.1"
 
 stories:
 
-- story: standings_path
+
+###########################
+#                         #
+#        STANDINGS        #
+#                         #
+###########################
+
+- story: standings_path (HAPPY path - v1)
   steps:
     - intent: greet
     - action: utter_greet
     - intent: give_competition
-#    - slot_was_set:
-#      - competition: Euroleague
     - action: utter_which_api
-    - intent: request_standings_info
+    - intent: give_api_section
+    # DE AQUÍ PARA ARRIBA SE REPITE ENTERO (se podría usar checkpoint)
+    - slot_was_set:
+      - api_section: Standings
     - action: standings_form
       # The form should be activated after standings_form was run.
     - active_loop: standings_form
@@ -24,19 +32,80 @@ stories:
     - active_loop: null
     # The actions we want to run when the form is submitted.
     - action: action_return_requested_standings
+#    - slot_was_set:
+#      - competition: null
+#    - slot_was_set:
+#      - season: null
+#    - slot_was_set:
+#      - round: null
+
+#- story: standings_path (HAPPY path - v1) - OLD
+#  steps:
+#    - intent: greet
+#    - action: utter_greet
+#    - intent: give_competition
+##    - slot_was_set:
+##      - competition: Euroleague
+#    - action: utter_which_api
+#    - intent: request_standings_info
+#    - action: standings_form
+#      # The form should be activated after standings_form was run.
+#    - active_loop: standings_form
+#    - slot_was_set:
+#      - requested_slot: season
+#    - slot_was_set:
+#      - requested_slot: round
+#    # Form is deactivated
+#    - slot_was_set:
+#      - requested_slot: null
+#    - active_loop: null
+#    # The actions we want to run when the form is submitted.
+#    - action: action_return_requested_standings
+
+#- story: standings_path (UNHAPPY PATH - v1.1 - user is asked to interrupt the form and does not want to continue)
+#  steps:
+#    - intent: greet
+#    - action: utter_greet
+#    - intent: give_competition
+##    - slot_was_set:
+##      - competition: Euroleague
+#    - action: utter_which_api
+#    - intent: request_standings_info
+#    - action: standings_form
+#      # The form should be activated after standings_form was run.
+#    - active_loop: standings_form
+#    - slot_was_set:
+#      - requested_slot: season
+#    - intent: interrupt_form
+#    - action: utter_ask_interrupt_form
+#    - intent: affirm
+#    - action: action_deactivate_loop # DEFAULT ACTION that deactivates the active loop and resets the requested slot.
+#    # Form is deactivated
+#    - slot_was_set:
+#      - requested_slot: null
+#    - active_loop: null
 
 
-- story: team_stats_all_seasons_path
+############################
+#                          #
+#        TEAM STATS        #
+#                          #
+############################
+
+- story: team_stats_all_seasons_path (happy path - v1)
   steps:
     - intent: greet
     - action: utter_greet
     - intent: give_competition
     - action: utter_which_api
-    - intent: request_team_stats_info
-    - action: action_return_teams_available
+    - intent: give_api_section
+    # DE AQUÍ PARA ARRIBA SE REPITE ENTERO (se podría usar checkpoint)
+    - slot_was_set:
+      - api_section: Team Stats
     - action: team_stats_all_form
     # The form should be activated after team_stats_all_form was run.
     - active_loop: team_stats_all_form
+    # - action: action_return_teams_available -> LO PONGAS DONDE LO PONGAS NO LO HACE
     - slot_was_set:
       - requested_slot: team
     # Form is deactivated
@@ -45,6 +114,27 @@ stories:
     - active_loop: null
     # The actions we want to run when the form is submitted
     - action: action_return_requested_team_stats_all
+
+#- story: team_stats_all_seasons_path (happy path - v1)
+#  steps:
+#    - intent: greet
+#    - action: utter_greet
+#    - intent: give_competition
+#    - action: utter_which_api
+#    - intent: request_team_stats_info
+#    - action: team_stats_all_form
+#    # The form should be activated after team_stats_all_form was run.
+#    - active_loop: team_stats_all_form
+#    # - action: action_return_teams_available -> LO PONGAS DONDE LO PONGAS NO LO HACE
+#    - slot_was_set:
+#      - requested_slot: team
+#    # Form is deactivated
+#    - slot_was_set:
+#      - requested_slot: null
+#    - active_loop: null
+#    # The actions we want to run when the form is submitted
+#    - action: action_return_requested_team_stats_all
+
 
 
 # LO DEJO POR SI ACASO

@@ -3,7 +3,7 @@ from typing import Any, Text, Dict, List
 from euroleague_api.standings import Standings
 from euroleague_api.team_stats import TeamStats
 from rasa_sdk import Action, Tracker
-from rasa_sdk.events import SlotSet
+from rasa_sdk.events import SlotSet, AllSlotsReset
 from rasa_sdk.executor import CollectingDispatcher
 
 
@@ -41,11 +41,12 @@ class ActionReturnRequestedStandings(Action):
             text=f"Standings for round {round_number} of the {season} season of the {competition_full}: \n {df2}"
         )
 
-        return [
-            SlotSet("competition", None),
-            SlotSet("season", None),
-            SlotSet("round", None)
-        ]
+        # return [
+        #     SlotSet("competition", None),
+        #     SlotSet("season", None),
+        #     SlotSet("round", None)
+        # ]
+        return [AllSlotsReset()]
 
 
 class ActionReturnTeamsAvailable(Action):
@@ -115,4 +116,5 @@ class ActionReturnRequestedTeamStatsAll(Action):
                  f"Turnovers: {turnovers} \n Pir: {pir}"
         )
 
-        return [SlotSet("team", None)]
+        # return [SlotSet("team", None)]
+        return [AllSlotsReset()]
