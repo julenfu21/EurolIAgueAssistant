@@ -102,6 +102,10 @@ stories:
     # DE AQUÍ PARA ARRIBA SE REPITE ENTERO (se podría usar checkpoint)
     - slot_was_set:
       - api_section: Team Stats
+    - action: utter_which_team_stat_type
+    - intent: give_team_stat_type
+    - slot_was_set:
+      - team_stat_type: all seasons
     - action: team_stats_all_form
     # The form should be activated after team_stats_all_form was run.
     - active_loop: team_stats_all_form
@@ -114,6 +118,35 @@ stories:
     - active_loop: null
     # The actions we want to run when the form is submitted
     - action: action_return_requested_team_stats_all
+
+- story: team_stats_single_seasons_path (happy path - v1)
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: give_competition
+    - action: utter_which_api
+    - intent: give_api_section
+    # DE AQUÍ PARA ARRIBA SE REPITE ENTERO (se podría usar checkpoint)
+    - slot_was_set:
+      - api_section: Team Stats
+    - action: utter_which_team_stat_type
+    - intent: give_team_stat_type
+    - slot_was_set:
+      - team_stat_type: single season
+    - action: team_stats_single_season_form
+    # The form should be activated after team_stats_all_form was run.
+    - active_loop: team_stats_single_season_form
+    # - action: action_return_teams_available -> LO PONGAS DONDE LO PONGAS NO LO HACE
+    - slot_was_set:
+      - requested_slot: team
+    - slot_was_set:
+      - requested_slot: season
+    # Form is deactivated
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    # The actions we want to run when the form is submitted
+    - action: action_return_requested_team_stats_single_season
 
 #- story: team_stats_all_seasons_path (happy path - v1)
 #  steps:

@@ -72,6 +72,17 @@ nlu:
    - Check the [Game Stats](api_section)
 
 
+- intent: give_team_stat_type
+  examples: |
+    - I want the stats of a [single season](team_stat_type)
+    - I want the stats of [all seasons](team_stat_type)
+    - [single season](team_stat_type)
+    - [all seasons](team_stat_type)
+    - Give me the stats of a [single season](team_stat_type)
+    - Give me the stats of [all seasons](team_stat_type)
+    - Stats of a [single season](team_stat_type)
+    - Stats of [all seasons](team_stat_type)
+
 # - intent: give_api
 #   examples: |
 #     - [Game Stats](api_slot)
@@ -136,6 +147,7 @@ nlu:
 
 - intent: give_team
   examples: |
+    - [Baskonia Vitoria-Gasteiz](team)
     - [Baskonia](team)
     - [Valencia](team)
     - [Maccabi](team)

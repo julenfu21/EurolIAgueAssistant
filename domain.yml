@@ -7,46 +7,35 @@ intents:
   - deny
   - give_competition
   - give_api_section
+  - give_team_stat_type
 #  - request_standings_info
 #  - request_team_stats_info
   # - request_...
   - give_season
   - give_round
   - give_team
+  - give_player
   # - give_...
   - interrupt_form
   - bot_challenge
-
-#  # - give_api
-#
-#  - give_team_stats
-#
-#
-#  # - give_team_stats_type
-#  - give_team_stats_all
-#  - give_team
-  - give_player
 
 
 entities:
   - competition
   - api_section
+  - team_stat_type
   - season
   - round
   - team
   - player
-#  # - api_slot
-#
-#  # - team_stats_type
 
 
 actions:
   - action_return_requested_standings
   - action_return_teams_available
   - action_return_requested_team_stats_all
+  - action_return_requested_team_stats_single_season
   - action_return_requested_player_stats_all
-  # - action_return_team_stats
-
 
 
 slots:
@@ -71,6 +60,16 @@ slots:
       - type: from_entity
         entity: api_section
 
+  team_stat_type:
+    type: categorical
+    influence_conversation: true
+    values:
+      - single season
+      - all seasons
+    mappings:
+      - type: from_entity
+        entity: team_stat_type
+
   season:
     type: float
     min_value: 2000.0
@@ -80,7 +79,11 @@ slots:
       - type: from_entity
         entity: season
         conditions:
-         - active_loop: standings_form
+          - active_loop: standings_form
+      - type: from_entity
+        entity: season
+        conditions:
+          - active_loop: team_stats_single_season_form
 
   round:
     type: float
@@ -91,16 +94,7 @@ slots:
       - type: from_entity
         entity: round
         conditions:
-         - active_loop: standings_form
-  
-  # team_stats_type:
-  #   type: text
-  #   influence_conversation: true
-  #   mappings:
-  #     - type: from_entity
-  #       entity: team_stats_type
-  #       # conditions:
-  #       # - active_loop: team_stats_form
+          - active_loop: standings_form
 
   team:
     type: text
@@ -109,8 +103,12 @@ slots:
       - type: from_entity
         entity: team
         conditions:
-         - active_loop: team_stats_all_form
-  
+          - active_loop: team_stats_all_form
+      - type: from_entity
+        entity: team
+        conditions:
+          - active_loop: team_stats_single_season_form
+
   player:
     type: text
     mappings:
@@ -168,6 +166,12 @@ forms:
     required_slots:
       # - team_stats_type
       - team
+
+  team_stats_single_season_form:
+    required_slots:
+      - team
+      - season
+
   player_stats_all_form:
     required_slots:
       - player
@@ -179,6 +183,9 @@ responses:
 
   utter_which_api:
   - text: "{competition} it is! What do you want to know about it, Standings, Team Stats, Player Stats or Game Stats?"
+
+  utter_which_team_stat_type:
+  - text: "Which team stat type do you want to check, single season or all seasons?"
 
   # utter_season:
   # utter_ask_<form_name>_<slot_name>
@@ -193,14 +200,18 @@ responses:
   utter_ask_player_stats_all_form_player:
   - text: "Which player do you want the stats of? Just in {competition}."
 
-# DE MOMENTO NO SE USA
-#  utter_team_stats_type:
-#  - text: "Do you want to check the stats for all seasons, one season, or a range of seasons?"
-
   # utter_team:
   # utter_ask_<form_name>_<slot_name>
   utter_ask_team_stats_all_form_team:
   - text: "Which team do you want the stats of?"
+
+  # utter_ask_<form_name>_<slot_name>
+  utter_ask_team_stats_single_season_form_team:
+  - text: "Which team do you want the stats of?"
+
+  # utter_ask_<form_name>_<slot_name>
+  utter_ask_team_stats_single_season_form_season:
+  - text: "Which season do you want to know about? Just write the year the season starts. For example, 2023 for the last season."
 
   utter_goodbye:
   - text: "Bye"
