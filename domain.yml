@@ -25,6 +25,7 @@ intents:
 #  # - give_team_stats_type
 #  - give_team_stats_all
 #  - give_team
+  - give_player
 
 
 entities:
@@ -33,6 +34,7 @@ entities:
   - season
   - round
   - team
+  - player
 #  # - api_slot
 #
 #  # - team_stats_type
@@ -61,6 +63,8 @@ slots:
     values:
       - Standings
       - Team Stats
+      - Player Stats
+      - Game Stats
       # - other_categories (in API)
     mappings:
       - type: from_entity
@@ -105,6 +109,14 @@ slots:
         entity: team
         conditions:
          - active_loop: team_stats_all_form
+  
+  player:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: player
+        conditions:
+         - active_loop: player_stats_form
 
 
 
@@ -155,6 +167,9 @@ forms:
     required_slots:
       # - team_stats_type
       - team
+  player_stats_all_form:
+    required_slots:
+      - player
 
 
 responses:
@@ -173,6 +188,9 @@ responses:
   # utter_ask_<form_name>_<slot_name>
   utter_ask_standings_form_round:
   - text: "Which round do you want to know about? **Limitation**: Depending on the season and competition, the number of rounds may vary."
+
+  utter_ask_player_stats_all_form_player:
+  - text: "Which player do you want the stats of? Just in {competition}."
 
 # DE MOMENTO NO SE USA
 #  utter_team_stats_type:
