@@ -44,7 +44,7 @@ class ActionReturnRequestedStandings(Action):
             text=f"Standings for round {round} of the {season} season of the {competition}: \n {df2}"
             )
     
-            return [SlotSet("competition", None), SlotSet("season", None)]
+            return [SlotSet("competition", None), SlotSet("season", None), SlotSet("round", None)]
 
 
 class ActionReturnRequestedGameMetadata(Action):
