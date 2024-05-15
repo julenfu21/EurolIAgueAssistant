@@ -44,6 +44,7 @@ actions:
   - action_return_requested_standings
   - action_return_teams_available
   - action_return_requested_team_stats_all
+  - action_return_requested_player_stats_all
   # - action_return_team_stats
 
 
@@ -116,7 +117,7 @@ slots:
       - type: from_entity
         entity: player
         conditions:
-         - active_loop: player_stats_form
+         - active_loop: player_stats_all_form
 
 
 
