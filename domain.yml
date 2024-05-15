@@ -8,6 +8,7 @@ intents:
   - give_competition
   - give_api_section
   - give_team_stat_type
+  - give_player_stat_type
 #  - request_standings_info
 #  - request_team_stats_info
   # - request_...
@@ -15,6 +16,8 @@ intents:
   - give_round
   - give_team
   - give_player
+  - give_category
+  - give_mode
   # - give_...
   - interrupt_form
   - bot_challenge
@@ -24,11 +27,13 @@ entities:
   - competition
   - api_section
   - team_stat_type
+  - player_stat_type
   - season
   - round
   - team
   - player
-
+  - category
+  - mode
 
 actions:
   - action_return_requested_standings
@@ -36,6 +41,8 @@ actions:
   - action_return_requested_team_stats_all
   - action_return_requested_team_stats_single_season
   - action_return_requested_player_stats_all
+  - action_return_available_leaders
+  - action_return_requested_leaders_stats_all
 
 
 slots:
@@ -69,6 +76,16 @@ slots:
     mappings:
       - type: from_entity
         entity: team_stat_type
+
+  player_stat_type:
+    type: categorical
+    influence_conversation: true
+    values:
+      - single player
+      - leaders
+    mappings:
+      - type: from_entity
+        entity: player_stat_type
 
   season:
     type: float
@@ -116,6 +133,87 @@ slots:
         entity: player
         conditions:
          - active_loop: player_stats_all_form
+
+  category:
+    type: categorical
+    influence_conversation: true
+    values:
+      - Valuation
+      - Score
+      - TotalRebounds
+      - OffensiveRebounds
+      - Assistances
+      - Steals
+      - BlocksFavour
+      - BlocksAgainst
+      - Turnovers
+      - FoulsReceived
+      - FoulsCommited
+      - FreeThrowsMade
+      - FreeThrowsAttempted
+      - FreeThrowsPercent
+      - FieldGoalsMade2
+      - FieldGoalsAttempted2
+      - FieldGoals2Percent
+      - FieldGoalsMade3
+      - FieldGoalsAttempted3
+      - FieldGoals3Percent
+      - FieldGoalsMadeTotal
+      - FieldGoalsAttemptedTotalç
+      - FieldGoalsPercent
+      - AccuracyMade
+      - AccuracyAttempted
+      - AccuracyPercent
+      - AssitancesTurnoversRation
+      - GamesPlayed
+      - GamesStarted
+      - TimePlayed
+      - Contras
+      - Dunks
+      - OffensiveReboundPercentage
+      - DefensiveReboundPercentage
+      - ReboundPercentage
+      - EffectiveFeildGoalPercentage
+      - TrueShootingPercentage
+      - AssistRatio
+      - TurnoverRatio
+      - FieldGoals2AttemptedRatio
+      - FieldGoals3AttemptedRatio
+      - FreeThrowRate
+      - Possessions
+      - GamesWon
+      - GamesLost
+      - DoubleDoubles
+      - TripleDoubles
+      - FieldGoalsAttempted2Share
+      - FieldGoalsAttempted3Share
+      - FreeThrowsAttemptedShare
+      - FieldGoalsMade2Share
+      - FieldGoalsMade3Share
+      - FreeThrowsMadeShare
+      - PointsMade2Rate
+      - PointsMade3Rate
+      - PointsMadeFreeThrowsRate
+      - PointsAttempted2Rate
+      - PointsAttempted3Rate
+      - Age
+    mappings:
+      - type: from_entity
+        entity: category
+        conditions:
+          - active_loop: leaders_stats_all_form
+
+  mode:
+    type: categorical
+    influence_conversation: true
+    values:
+      - Accumulated
+      - PerGame
+    mappings:
+      - type: from_entity
+        entity: mode
+        conditions:
+          - active_loop: leaders_stats_all_form
 
 
 
@@ -176,6 +274,11 @@ forms:
     required_slots:
       - player
 
+  leaders_stats_all_form:
+    required_slots:
+      - category
+      - mode
+
 
 responses:
   utter_greet:
@@ -186,6 +289,15 @@ responses:
 
   utter_which_team_stat_type:
   - text: "Which team stat type do you want to check, single season or all seasons?"
+
+  utter_which_player_stat_type:
+  - text: "Do you want to check the stats of a single player or the leaders of each category?"
+
+  utter_ask_leaders_stats_all_form_category:
+  - text: "Which category do you want to know the leaders of? Please write it exactly as it is shown above."
+
+  utter_ask_leaders_stats_all_form_mode:
+  - text: "Do you want to know the Accumulated stats or the PerGame stats? **Limitation**: API has some errors and it always outputs PerGame stats leaders."
 
   # utter_season:
   # utter_ask_<form_name>_<slot_name>

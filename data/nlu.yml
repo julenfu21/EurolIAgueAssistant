@@ -83,6 +83,88 @@ nlu:
     - Stats of a [single season](team_stat_type)
     - Stats of [all seasons](team_stat_type)
 
+- intent: give_player_stat_type
+  examples: |
+    - [single slayer](player_stat_type)
+    - [leaders](player_stat_type)
+    - I want the stats of a [single player](player_stat_type)
+    - I want the stats of the [leaders](player_stat_type)
+    - Stats of a [single player](player_stat_type)
+    - Stats of the [leaders](player_stat_type)
+    - [leaders](player_stat_type) please
+    - Just a [single player](player_stat_type)
+
+- intent: give_category
+  examples: |
+    - [Valuation](category)
+    - [Score](category)
+    - [TotalRebounds](category)
+    - [OffensiveRebounds](category)
+    - [Assistances](category)
+    - [Steals](category)
+    - [BlocksFavour](category)
+    - [BlocksAgainst](category)
+    - [Turnovers](category)
+    - [FoulsReceived](category)
+    - [FoulsCommited](category)
+    - [FreeThrowsMade](category)
+    - [FreeThrowsAttempted](category)
+    - [FreeThrowsPercent](category)
+    - [FieldGoalsMade2](category)
+    - [FieldGoalsAttempted2](category)
+    - [FieldGoals2Percent](category)
+    - [FieldGoalsMade3](category)
+    - [FieldGoalsAttempted3](category)
+    - [FieldGoals3Percent](category)
+    - [FieldGoalsMadeTotal](category)
+    - [FieldGoalsAttemptedTotal](category)
+    - [FieldGoalsPercent](category)
+    - [AccuracyMade](category)
+    - [AccuracyAttempted](category)
+    - [AccuracyPercent](category)
+    - [AssitancesTurnoversRation](category)
+    - [GamesPlayed](category)
+    - [GamesStarted](category)
+    - [TimePlayed](category)
+    - [Contras](category)
+    - [Dunks](category)
+    - [OffensiveReboundPercentage](category)
+    - [DefensiveReboundPercentage](category)
+    - [ReboundPercentage](category)
+    - [EffectiveFeildGoalPercentage](category)
+    - [TrueShootingPercentage](category)
+    - [AssistRatio](category)
+    - [TurnoverRatio](category)
+    - [FieldGoals2AttemptedRatio](category)
+    - [FieldGoals3AttemptedRatio](category)
+    - [FreeThrowRate](category)
+    - [Possessions](category)
+    - [GamesWon](category)
+    - [GamesLost](category)
+    - [DoubleDoubles](category)
+    - [TripleDoubles](category)
+    - [FieldGoalsAttempted2Share](category)
+    - [FieldGoalsAttempted3Share](category)
+    - [FreeThrowsAttemptedShare](category)
+    - [FieldGoalsMade2Share](category)
+    - [FieldGoalsMade3Share](category)
+    - [FreeThrowsMadeShare](category)
+    - [PointsMade2Rate](category)
+    - [PointsMade3Rate](category)
+    - [PointsMadeFreeThrowsRate](category)
+    - [PointsAttempted2Rate](category)
+    - [PointsAttempted3Rate](category)
+    - [Age](category)
+
+- intent: give_mode
+  examples: |
+    - [PerGame](mode)
+    - [Accumulated](mode)
+    - [PerGame](mode) stats please
+    - [Accumulated](mode) stats please
+    - I want the [PerGame](mode) stats mode
+    - I want the [Accumulated](mode) stats mode
+
 # - intent: give_api
 #   examples: |
 #     - [Game Stats](api_slot)
@@ -150,6 +232,7 @@ nlu:
     - [Baskonia Vitoria-Gasteiz](team)
     - [Baskonia](team)
     - [Valencia](team)
+    - [Valencia Basket](team)
     - [Maccabi](team)
     - [Real Madrid](team)
     - [Barcelona](team)
@@ -163,10 +246,18 @@ nlu:
     - [Montepaschi](team)
     - [AEK](team)
     - [UNICS](team)
+    - [UNICS Kazan](team)
+    - [Olimpia Milano](team)
     - [Cedevita](team)
     - [Efes](team)
+    - [Buducnost](team)
     - [Slask](team)
     - [Rytas](team)
+    - [Virtus](team)
+    - [Virtus Bologna](team)
+    - [Virtus Segafredo Bologna](team)
+    - [Virtus Roma](team)
+    - [Fortitudo](team)
 
 - intent: give_player
   examples: |
@@ -218,7 +309,12 @@ nlu:
     - [Pierre Oriola](player)
     - [Victor Claver](player)
     - [Alex Abrines](player)
-    
+    - [Rolands Smits](player)
+    - [Brandon Davies](player)
+    - [Nigel Williams-Goss](player)
+    - [Adam Hanga](player)
+    - [Fabián Causeur](player)
+
 
 - intent: interrupt_form
   examples: |

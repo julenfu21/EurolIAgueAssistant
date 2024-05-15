@@ -218,6 +218,12 @@ stories:
     # DE AQUÍ PARA ARRIBA SE REPITE ENTERO (se podría usar checkpoint)
     - slot_was_set:
       - api_section: Player Stats
+    
+    - action: utter_which_player_stat_type
+    - intent: give_player_stat_type
+
+    - slot_was_set:
+      - requested_slot: Single Player
     - action: player_stats_all_form
     # The form should be activated after team_stats_all_form was run.
     - active_loop: player_stats_all_form
@@ -230,3 +236,33 @@ stories:
     - active_loop: null
     # The actions we want to run when the form is submitted
     - action: action_return_requested_player_stats_all
+
+- story: leaders_player_stats (happy path - v1)
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: give_competition
+    - action: utter_which_api
+    - intent: give_api_section
+    # DE AQUÍ PARA ARRIBA SE REPITE ENTERO (se podría usar checkpoint)
+    - slot_was_set:
+      - api_section: Player Stats
+
+    - slot_was_set:
+      - requested_slot: Leaders
+
+    - action: action_return_available_leaders
+    - action: leaders_stats_all_form
+    # The form should be activated after team_stats_all_form was run.
+    - active_loop: leaders_stats_all_form
+    # - action: action_return_teams_available -> LO PONGAS DONDE LO PONGAS NO LO HACE
+    - slot_was_set:
+      - requested_slot: category
+    - slot_was_set:
+      - requested_slot: mode
+    # Form is deactivated
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    # The actions we want to run when the form is submitted
+    - action: action_return_requested_leaders_stats_all

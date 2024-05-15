@@ -212,11 +212,73 @@ class ActionReturnRequestedPlayerStatsAll(Action):
         teams_played_for = desired_row['player.team.name'].to_string(index=False).split(';')
         teams_played_for_string = ', '.join(teams_played_for)
 
-        dispatcher.utter_message(
-            text=f"Player stats per game for {formatted_name} in teams {teams_played_for_string}: \n Games played: {games_played} \n Points: {points} \n "
-                 f"Assists: {assists} \n Rebounds: {rebounds} \n Steals: {steals} \n Blocks: {blocks} \n "
-                 f"Turnovers: {turnovers} \n Pir: {pir}"
-        )
+        if len(teams_played_for) == 1:
+            
+
+            dispatcher.utter_message(
+                text=f"Player stats per game for {formatted_name} in {teams_played_for_string}: \n Games played: {games_played} \n Points: {points} \n "
+                    f"Assists: {assists} \n Rebounds: {rebounds} \n Steals: {steals} \n Blocks: {blocks} \n "
+                    f"Turnovers: {turnovers} \n Pir: {pir}"
+            )
+        else:
+            dispatcher.utter_message(
+                text=f"Player stats per game for {formatted_name} in teams {teams_played_for_string}: \n Games played: {games_played} \n Points: {points} \n "
+                    f"Assists: {assists} \n Rebounds: {rebounds} \n Steals: {steals} \n Blocks: {blocks} \n "
+                    f"Turnovers: {turnovers} \n Pir: {pir}"
+            )
 
         # return [SlotSet("player", None)]
+        return [AllSlotsReset()]
+    
+class ActionReturnAvailableLeaders(Action):
+
+    def name(self) -> Text:
+        return "action_return_available_leaders"
+
+    def run(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+        
+        stats = ['Valuation', 'Score', 'TotalRebounds', 'OffensiveRebounds', 'Assistances', 'Steals', 'BlocksFavour', 'BlocksAgainst', 'Turnovers', 'FoulsReceived', 'FoulsCommited', 'FreeThrowsMade', 'FreeThrowsAttempted', 'FreeThrowsPercent', 'FieldGoalsMade2', 'FieldGoalsAttempted2', 'FieldGoals2Percent', 'FieldGoalsMade3', 'FieldGoalsAttempted3', 'FieldGoals3Percent', 'FieldGoalsMadeTotal', 'FieldGoalsAttemptedTotal', 'FieldGoalsPercent', 'AccuracyMade', 'AccuracyAttempted', 'AccuracyPercent', 'AssitancesTurnoversRation', 'GamesPlayed', 'GamesStarted', 'TimePlayed', 'Contras', 'Dunks', 'OffensiveReboundPercentage', 'DefensiveReboundPercentage', 'ReboundPercentage', 'EffectiveFeildGoalPercentage', 'TrueShootingPercentage', 'AssistRatio', 'TurnoverRatio', 'FieldGoals2AttemptedRatio', 'FieldGoals3AttemptedRatio', 'FreeThrowRate', 'Possessions', 'GamesWon', 'GamesLost', 'DoubleDoubles', 'TripleDoubles', 'FieldGoalsAttempted2Share', 'FieldGoalsAttempted3Share', 'FreeThrowsAttemptedShare', 'FieldGoalsMade2Share', 'FieldGoalsMade3Share', 'FreeThrowsMadeShare', 'PointsMade2Rate', 'PointsMade3Rate', 'PointsMadeFreeThrowsRate', 'PointsAttempted2Rate', 'PointsAttempted3Rate', 'Age']
+        stats_str = ', '.join(stats)
+        dispatcher.utter_message(text=f"Categories available: {stats_str}")
+
+        return []
+
+class ActionReturnRequestedLeadersStatsAll(Action):
+
+    def name(self) -> Text:
+        return "action_return_requested_leaders_stats_all"
+
+    def run(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+
+        category = tracker.get_slot(key="category")
+        mode = tracker.get_slot(key="mode")
+        
+
+        competition = tracker.get_slot(key="competition")
+        if competition == 'Euroleague':
+            competition = 'E'
+        else:
+            competition = 'U'
+
+        player_stats = PlayerStats(competition=competition)
+        df = player_stats.get_player_stats_leaders_all_seasons(stat_category = category, statistic_mode = mode, top_n = 10)
+
+        leaders = df.drop(columns=['rank', 'playerCode', 'playerAbbreviatedName', 'imageUrl', 'teamImageUrl', 'timePlayed', 'secondsPlayed', 'possessions', 'clubCodes', 'abbreviatedClubNames', 'tvCodes', 'clubSeasonCodes'])
+
+        # Poner más stats? Pedir cuales quiere el usuario?
+
+        dispatcher.utter_message(
+            text=f"Top 5 players in {category} {mode}: \n {leaders}"
+        )
+
         return [AllSlotsReset()]
