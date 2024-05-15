@@ -71,18 +71,19 @@ nlu:
 #     - Check the [Player Stats](api_slot)
 #     - Check the [Team Stats](api_slot)
 
-- intent: give_standings
+- intent: request_standings_info
   examples: |
-    - [Standings](standings)
-    - I want to know about the [Standings](standings)
-    - Tell me about the [Standings](standings)
-    - Check the [Standings](standings)
-- intent: give_team_stats
+    - Standings
+    - I want to know about the Standings
+    - Tell me about the Standings
+    - Check the Standings
+
+- intent: request_team_stats_info
   examples: |
-    - [Team Stats](team_stats)
-    - I want to know about the [Team Stats](team_stats)
-    - Tell me about the [Team Stats](team_stats)
-    - Check the [Team Stats](team_stats)
+    - Team Stats
+    - I want to know about the Team Stats
+    - Tell me about the Team Stats
+    - Check the Team Stats
 
 - intent: give_season
   examples: |
@@ -99,19 +100,19 @@ nlu:
     - [13](round)
     - [23](round)
     - [34](round)
-    - I want to know aboot round [5](round)
+    - I want to know about round [5](round)
     - Tell me about round [7](round)
 
 # - intent: give_team_stats_type
 #   examples: |
 #     - All seasons
 
-- intent: give_team_stats_all
-  examples: |
-    - All seasons
-    - All seasons, please
-    - I want to know about all seasons
-    - Tell me about all seasons
+#- intent: give_team_stats_all
+#  examples: |
+#    - All seasons
+#    - All seasons, please
+#    - I want to know about all seasons
+#    - Tell me about all seasons
 
 - intent: give_team
   examples: |
@@ -186,40 +187,6 @@ nlu:
     - no way
     - not really
 
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-    - [BASKONIA VITORIA-GASTEIZ](home_team). i feel sad.
 
 - intent: bot_challenge
   examples: |
@@ -227,59 +194,3 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
-- intent: tell_name
-  examples: |
-    - i want to tell you my name
-    - give name
-    - ill give you my name
-    - do you want to know my name?
-
-- intent: repeat_name
-  examples: |
-    - what is my name
-    - tell me my name
-    - do you know my name
-    - repeat my name
-
-- intent: give_name
-  examples: |
-    - Vincent
-    - Rachael
-    - Emma
-    - Juste
-    - Jenny
-    - Joseba
-    - Julen
-
-- intent: check_euroleague_api
-  examples: |
-    - I want to check the Euroleague API.
-    - Please, return results from the Euroleague API.
-    - Euroleague API, please.
-    - Obtain results from the Euroleague API.
-
-- intent: request_game_metadata
-  examples: |
-    - I would like to check the game metadata section. 
-    - I want game metadata, please.
-    - Game metadata.
-    - Check game metadata.
-#    - I would like to check the game metadata section. The home team is [Baskonia](home_team) and the away team [Valencia](away_team).
-#    - I want game metadata, please. Home team: [Baskonia](home_team); Away team: [Valencia](away_team)
-#    - Game metadata. [Baskonia](home_team) - [Valencia](away_team)
-#    - Check game metadata. [Baskonia](home_team) vs. [Valencia](away_team).
-
-- intent: give_home_team
-  examples: |
-    - [BASKONIA VITORIA-GASTEIZ](home_team)
-    - The home team is [BASKONIA VITORIA-GASTEIZ](home_team)
-    - Home team: [BASKONIA VITORIA-GASTEIZ](home_team)
-    - I want information about [BASKONIA VITORIA-GASTEIZ](home_team)
-
-- intent: give_away_team
-  examples: |
-    - [MACCABI PLAYTIKA TEL AVIV](away_team)
-    - The home team is [MACCABI PLAYTIKA TEL AVIV](away_team)
-    - Home team: [MACCABI PLAYTIKA TEL AVIV](away_team)
-    - I want information about [MACCABI PLAYTIKA TEL AVIV](away_team)

@@ -1,56 +1,16 @@
 from typing import Any, Text, Dict, List
 
-from euroleague_api.game_stats import GameStats
-from euroleague_api.team_stats import TeamStats
 from euroleague_api.standings import Standings
-from euroleague_api.player_stats import PlayerStats
+from euroleague_api.team_stats import TeamStats
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 
 
-
 class ActionReturnRequestedStandings(Action):
-    
-        def name(self) -> Text:
-            return "action_return_requested_standings"
-    
-        def run(
-                self,
-                dispatcher: CollectingDispatcher,
-                tracker: Tracker,
-                domain: Dict[Text, Any]
-        ) -> List[Dict[Text, Any]]:
-    
-            # Obtain competition from slots
-            competition = tracker.get_slot(key="competition")
-            if competition == 'Euroleague':
-                competition = 'E'
-            else:
-                competition = 'U'
-            season = tracker.get_slot(key="season")
-            round = tracker.get_slot(key="round")
-    
-            # Obtain standings
-            standings = Standings(competition=competition)
-            df = standings.get_standings(season=season, round_number=round)
-    
-            # DEBUG PRINTS (se pueden quitar --> salen en la consola que ejecutas 'rasa run actions')
-            print(df)
-    
-            df2 = df[['position', 'gamesWon', 'gamesLost', 'club.name']].copy()
-
-            dispatcher.utter_message(
-            text=f"Standings for round {round} of the {season} season of the {competition}: \n {df2}"
-            )
-    
-            return [SlotSet("competition", None), SlotSet("season", None), SlotSet("round", None)]
-        
-
-class ActionReturnTeamsAvaliable(Action):
 
     def name(self) -> Text:
-        return "action_return_teams_avaliable"
+        return "action_return_requested_standings"
 
     def run(
             self,
@@ -58,7 +18,48 @@ class ActionReturnTeamsAvaliable(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
-        
+
+        # Obtain competition from slots
+        competition_full = tracker.get_slot(key="competition")
+        if competition_full == 'Euroleague':
+            competition = 'E'
+        else:
+            competition = 'U'
+        season = tracker.get_slot(key="season")
+        round_number = tracker.get_slot(key="round")
+
+        # Obtain standings
+        standings = Standings(competition=competition)
+        df = standings.get_standings(season=season, round_number=round_number)
+
+        # DEBUG PRINTS
+        print(df)
+
+        df2 = df[['position', 'gamesWon', 'gamesLost', 'club.name']].copy()
+
+        dispatcher.utter_message(
+            text=f"Standings for round {round_number} of the {season} season of the {competition_full}: \n {df2}"
+        )
+
+        return [
+            SlotSet("competition", None),
+            SlotSet("season", None),
+            SlotSet("round", None)
+        ]
+
+
+class ActionReturnTeamsAvailable(Action):
+
+    def name(self) -> Text:
+        return "action_return_teams_available"
+
+    def run(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+
         competition = tracker.get_slot(key="competition")
         if competition == 'Euroleague':
             competition = 'E'
@@ -73,11 +74,12 @@ class ActionReturnTeamsAvaliable(Action):
         dispatcher.utter_message(text=f"Teams available: {teams_str}")
 
         return []
-    
-class ActionReturnTeamStats(Action):
+
+
+class ActionReturnRequestedTeamStatsAll(Action):
 
     def name(self) -> Text:
-        return "action_return_team_stats_all"
+        return "action_return_requested_team_stats_all"
 
     def run(
             self,
@@ -95,123 +97,22 @@ class ActionReturnTeamStats(Action):
 
         team_stats = TeamStats(competition=competition)
         df = team_stats.get_team_stats(endpoint='traditional')
-        
+
         # Poner más stats? Pedir cuales quiere el usuario?
         desired_row = df[df['team.name'] == team_name]
         games_played = desired_row['gamesPlayed'].iloc[0]
-        games_won = desired_row['gamesWon'].iloc[0]
-        games_lost = desired_row['gamesLost'].iloc[0]
         points = desired_row['pointsScored'].iloc[0]
+        assists = desired_row['assists'].iloc[0]
+        rebounds = desired_row['totalRebounds'].iloc[0]
+        steals = desired_row['steals'].iloc[0]
+        blocks = desired_row['blocks'].iloc[0]
+        turnovers = desired_row['turnovers'].iloc[0]
+        pir = desired_row['pir'].iloc[0]
 
         dispatcher.utter_message(
-            text=f"Team stats for {team_name}: \n Games played: {games_played} \n Games won: {games_won} \n Games lost: {games_lost} \n Points: {points}"
+            text=f"Team stats for {team_name}: \n Games played: {games_played} \n Points: {points} \n "
+                 f"Assists: {assists} \n Rebounds: {rebounds} \n Steals: {steals} \n Blocks: {blocks} \n "
+                 f"Turnovers: {turnovers} \n Pir: {pir}"
         )
 
         return [SlotSet("team", None)]
-
-
-class ActionReturnRequestedGameMetadata(Action):
-
-    def name(self) -> Text:
-        return "action_return_requested_game_metadata"
-
-    def run(
-            self,
-            dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]
-    ) -> List[Dict[Text, Any]]:
-
-        # Obtain home and away team names from slots
-        home_team_name = tracker.get_slot(key="home_team")
-        away_team_name = tracker.get_slot(key="away_team")
-
-        # Extract some metadata stats
-        game_stats = GameStats(competition='E')
-        metadata_df = game_stats.get_game_metadata_season(season=2023)
-        columns_to_extract = ['hometeam', 'awayteam', 'homescore', 'awayscore']
-        metadata_df_subset = metadata_df[columns_to_extract]
-
-        # Filter by team names and extract first match
-        home_team_condition = metadata_df_subset['hometeam'] == home_team_name
-        away_team_condition = metadata_df_subset['awayteam'] == away_team_name
-        metadata_df_subset = metadata_df_subset[home_team_condition & away_team_condition]
-        first_occurrence = metadata_df_subset.head(1)
-
-        # DEBUG PRINTS (se pueden quitar --> salen en la consola que ejecutas 'rasa run actions')
-        print(f'Home team: {home_team_name}')
-        print(f'Away team: {away_team_name}')
-        print(metadata_df_subset)
-
-        # Obtain match result
-        home_team_score = first_occurrence.iloc[0]['homescore']
-        away_team_score = first_occurrence.iloc[0]['awayscore']
-
-        dispatcher.utter_message(
-            text=f"Game result: \n {home_team_name}: {home_team_score} \n {away_team_name}: {away_team_score}"
-        )
-
-        return [SlotSet("home_team", None), SlotSet("away_team", None)]
-
-
-class ActionReturnEuroleagueApiValues(Action):
-
-    def name(self) -> Text:
-        return "action_return_euroleague_api_values"
-
-    def run(
-            self,
-            dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]
-    ) -> List[Dict[Text, Any]]:
-
-        team_stats = TeamStats(competition='E')
-        df = team_stats.get_team_stats(
-            endpoint='traditional'
-        )
-
-        team_name = "Baskonia Vitoria-Gasteiz"
-        desired_row = df[df['team.name'] == team_name]
-        games_played = desired_row['gamesPlayed'].iloc[0]  # 624
-        # dispatcher.utter_message(text=f"Games played by {team_name}: {games_played}")
-
-        return [SlotSet("team", team_name), SlotSet("amount", games_played)]
-
-
-class ActionReceiveName(Action):
-
-    def name(self) -> Text:
-        return "action_receive_name"
-
-    def run(
-            self,
-            dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]
-    ) -> List[Dict[Text, Any]]:
-
-        text = tracker.latest_message['text']  # get entire text from the previous message
-        dispatcher.utter_message(text=f"I'll remember your name {text}!")
-        return [SlotSet("name", text)]
-
-
-class ActionSayName(Action):
-
-    def name(self) -> Text:
-        return "action_say_name"
-
-    def run(
-            self,
-            dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]
-    ) -> List[Dict[Text, Any]]:
-
-        name = tracker.get_slot('name')  # Si no tiene valor devuelve None
-        if not name:
-            dispatcher.utter_message(text="I don't know your name.")
-        else:
-            dispatcher.utter_message(text=f"Your name is {name}!")
-
-        return []

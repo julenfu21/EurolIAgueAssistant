@@ -6,28 +6,23 @@ stories:
   steps:
     - intent: greet
     - action: utter_greet
-    - active_loop: standings_form
-
     - intent: give_competition
-    - slot_was_set:
-      - requested_slot: competition
+#    - slot_was_set:
+#      - competition: Euroleague
     - action: utter_which_api
-    - intent: give_standings
-    # - intent: give_api
-    # - slot_was_set:
-    #   - requested_slot: api_slot
-    - action: utter_season
-    - intent: give_season
+    - intent: request_standings_info
+    - action: standings_form
+      # The form should be activated after standings_form was run.
+    - active_loop: standings_form
     - slot_was_set:
       - requested_slot: season
-    - action: utter_round
-    - intent: give_round
     - slot_was_set:
       - requested_slot: round
-
+    # Form is deactivated
     - slot_was_set:
       - requested_slot: null
     - active_loop: null
+    # The actions we want to run when the form is submitted.
     - action: action_return_requested_standings
 
 
@@ -35,68 +30,51 @@ stories:
   steps:
     - intent: greet
     - action: utter_greet
-    - active_loop: team_stats_all_form
-
     - intent: give_competition
-    - slot_was_set:
-      - requested_slot: competition
     - action: utter_which_api
-    - intent: give_team_stats
-    # - intent: give_api
-    # - slot_was_set:
-    #   - requested_slot: api_slot
-    - action: utter_team_stats_type
-    # - intent: give_team_stats_type
-    # - slot_was_set:
-    #   - requested_slot: team_stats_type
-    - intent: give_team_stats_all
-    
-    - action: action_return_teams_avaliable
-    - action: utter_team
-    - intent: give_team
+    - intent: request_team_stats_info
+    - action: action_return_teams_available
+    - action: team_stats_all_form
+    # The form should be activated after team_stats_all_form was run.
+    - active_loop: team_stats_all_form
     - slot_was_set:
       - requested_slot: team
-      
-    - slot_was_set:
-      - requested_slot: null
-    - active_loop: null
-    - action: action_return_team_stats_all
-
-
-
-- story: name path
-  steps:
-    - intent: greet
-    - action: utter_greet
-    - intent: tell_name
-    - action: utter_ask_name
-    - intent: give_name
-    - action: action_receive_name
-    - intent: repeat_name
-    - action: action_say_name
-
-- story: euroleague api path
-  steps:
-    - intent: greet
-    - action: utter_greet
-    - intent: check_euroleague_api
-    - action: action_return_euroleague_api_values
-    - action: utter_games_played_by_baskonia
-
-- story: interactive story 1
-  steps:
-    - intent: request_game_metadata
-    - action: game_metadata_form
-    # The form should be activated after game_metadata_form was run.
-    - active_loop: game_metadata_form
-    - slot_was_set:
-      - requested_slot: home_team
-    - slot_was_set:
-      - requested_slot: away_team
     # Form is deactivated
     - slot_was_set:
       - requested_slot: null
     - active_loop: null
-    # The actions we want to run when the form is submitted.
-    - action: utter_requested_game_metadata
-    - action: action_return_requested_game_metadata
+    # The actions we want to run when the form is submitted
+    - action: action_return_requested_team_stats_all
+
+
+# LO DEJO POR SI ACASO
+#- story: team_stats_all_seasons_path
+#  steps:
+#    - intent: greet
+#    - action: utter_greet
+#    - active_loop: team_stats_all_form
+#
+#    - intent: give_competition
+#    - slot_was_set:
+#      - requested_slot: competition
+#    - action: utter_which_api
+#    - intent: give_team_stats
+#    # - intent: give_api
+#    # - slot_was_set:
+#    #   - requested_slot: api_slot
+#    - action: utter_team_stats_type
+#    # - intent: give_team_stats_type
+#    # - slot_was_set:
+#    #   - requested_slot: team_stats_type
+#    - intent: give_team_stats_all
+#
+#    - action: action_return_teams_available
+#    - action: utter_team
+#    - intent: give_team
+#    - slot_was_set:
+#      - requested_slot: team
+#
+#    - slot_was_set:
+#      - requested_slot: null
+#    - active_loop: null
+#    - action: action_return_team_stats_all

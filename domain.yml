@@ -5,52 +5,48 @@ intents:
   - goodbye
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - tell_name:
-      use_entities: true
-  - give_name:
-      use_entities: true
-  - repeat_name:
-      use_entities: true
-  - check_euroleague_api
-  - request_game_metadata
-  - give_home_team
-  - give_away_team
   - give_competition
-  # - give_api
-  - give_standings
-  - give_team_stats
+  - request_standings_info
+  - request_team_stats_info
+  # - request_...
   - give_season
   - give_round
-  # - give_team_stats_type
-  - give_team_stats_all
   - give_team
+  # - give_...
+  - bot_challenge
+
+#  - check_euroleague_api
+#  - request_game_metadata
+#  - give_home_team
+#  - give_away_team
+#
+#  # - give_api
+#
+#  - give_team_stats
+#
+#
+#  # - give_team_stats_type
+#  - give_team_stats_all
+#  - give_team
 
 
 entities:
-  - name
-  - amount
-  - home_team
-  - away_team
   - competition
-  # - api_slot
   - season
   - round
-  # - team_stats_type
   - team
+#  # - api_slot
+#
+#  # - team_stats_type
+#  - team
 
 
 actions:
-  - action_receive_name
-  - action_say_name
-  - action_return_euroleague_api_values
-  - action_return_requested_game_metadata
   - action_return_requested_standings
-  - action_return_teams_avaliable
-  - action_return_team_stats
-  - action_return_team_stats_all
+  - action_return_teams_available
+  - action_return_requested_team_stats_all
+  # - action_return_team_stats
+
 
 
 slots:
@@ -61,17 +57,15 @@ slots:
     mappings:
       - type: from_entity
         entity: competition
-        # conditions:
-        # - active_loop: competition
   
-  api_slot:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: api_slot
-        # conditions:
-        # - active_loop: requested_api
+#  api_slot:
+#    type: text
+#    influence_conversation: true
+#    mappings:
+#      - type: from_entity
+#        entity: api_slot
+#        # conditions:
+#        # - active_loop: requested_api
 
   season:
     type: float
@@ -81,8 +75,8 @@ slots:
     mappings:
       - type: from_entity
         entity: season
-        # conditions:
-        # - active_loop: season
+        conditions:
+         - active_loop: standings_form
 
   round:
     type: float
@@ -92,8 +86,8 @@ slots:
     mappings:
       - type: from_entity
         entity: round
-        # conditions:
-        # - active_loop: round
+        conditions:
+         - active_loop: standings_form
   
   # team_stats_type:
   #   type: text
@@ -110,83 +104,83 @@ slots:
     mappings:
       - type: from_entity
         entity: team
-        # conditions:
-        # - active_loop: team_stats_form
-
-
-
-
-  name:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: name
-
-  amount:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: amount
-
-  home_team:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: home_team
-        # To change the slot value just when the form is active (avoid changing when unnecessary)
         conditions:
-        - active_loop: game_metadata_form
+         - active_loop: team_stats_all_form
 
-  away_team:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: away_team
-        conditions:
-        - active_loop: game_metadata_form
+
+
+
+#  name:
+#    type: text
+#    mappings:
+#      - type: from_entity
+#        entity: name
+#
+#  amount:
+#    type: text
+#    mappings:
+#      - type: from_entity
+#        entity: amount
+#
+#  home_team:
+#    type: text
+#    influence_conversation: true
+#    mappings:
+#      - type: from_entity
+#        entity: home_team
+#        # To change the slot value just when the form is active (avoid changing when unnecessary)
+#        conditions:
+#        - active_loop: game_metadata_form
+#
+#  away_team:
+#    type: text
+#    influence_conversation: true
+#    mappings:
+#      - type: from_entity
+#        entity: away_team
+#        conditions:
+#        - active_loop: game_metadata_form
 
 
 forms:
-  game_metadata_form:
+  standings_form:
     # "If you do not want any of the required slots of a form to be filled when the intent is one from the list"
     # ignored_intents:
-      # intent_1
+    # intent_1
     required_slots:
-      - home_team
-      - away_team
-    
-  standings_form:
-    required_slots:
-      - competition
+      # - competition
       - season
       - round
   
   team_stats_all_form:
     required_slots:
-      - competition
       # - team_stats_type
       - team
 
 
 responses:
   utter_greet:
-  - text: "Hey! I am a bot that can help you with Euroleague and Eurocup information. What competition do you want to know about?"
+  - text: "Hey! I am a bot that can help you with Euroleague and Eurocup information. Which competition do you want to know about?"
 
   utter_which_api:
   - text: "{competition} it is! What do you want to know about it, Standings, Team Stats, Player Stats or Game Stats?"
 
-  utter_season:
+  # utter_season:
+  # utter_ask_<form_name>_<slot_name>
+  utter_ask_standings_form_season:
   - text: "Which season do you want to know about? Just write the year the season starts. For example, 2023 for the last season."
 
-  utter_round:
+  # utter_round:
+  # utter_ask_<form_name>_<slot_name>
+  utter_ask_standings_form_round:
   - text: "Which round do you want to know about? **Limitation**: Depending on the season and competition, the number of rounds may vary."
 
-  utter_team_stats_type:
-  - text: "Do you want to check the stats for all seasons, one season, or a range of seasons?"
+# DE MOMENTO NO SE USA
+#  utter_team_stats_type:
+#  - text: "Do you want to check the stats for all seasons, one season, or a range of seasons?"
 
-  utter_team:
+  # utter_team:
+  utter_ask_team_stats_all_form_team:
   - text: "Which team do you want the stats of?"
 
   utter_goodbye:
@@ -194,22 +188,6 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
-
-  utter_ask_name:
-  - text: "What is your name?"
-
-  utter_games_played_by_baskonia:
-  - text: "Games played by {team}: {amount}"
-
-  # utter_ask_<form_name>_<slot_name>
-  utter_ask_game_metadata_form_home_team:
-  - text: "The information of which home team do you want to check?"
-
-  utter_ask_game_metadata_form_away_team:
-  - text: "The information of which away team do you want to check?"
-
-  utter_requested_game_metadata:
-    - text: "You asked for the following game: Home team: {home_team} || Away team: {away_team}"
 
 
 session_config:
