@@ -19,21 +19,27 @@ intents:
   - give_home_team
   - give_away_team
   - give_competition
-  - give_api
+  # - give_api
+  - give_standings
+  - give_team_stats
   - give_season
   - give_round
+  # - give_team_stats_type
+  - give_team_stats_all
+  - give_team
 
 
 entities:
   - name
-  - team
   - amount
   - home_team
   - away_team
   - competition
-  - api_slot
+  # - api_slot
   - season
   - round
+  # - team_stats_type
+  - team
 
 
 actions:
@@ -42,6 +48,9 @@ actions:
   - action_return_euroleague_api_values
   - action_return_requested_game_metadata
   - action_return_requested_standings
+  - action_return_teams_avaliable
+  - action_return_team_stats
+  - action_return_team_stats_all
 
 
 slots:
@@ -85,6 +94,24 @@ slots:
         entity: round
         # conditions:
         # - active_loop: round
+  
+  # team_stats_type:
+  #   type: text
+  #   influence_conversation: true
+  #   mappings:
+  #     - type: from_entity
+  #       entity: team_stats_type
+  #       # conditions:
+  #       # - active_loop: team_stats_form
+
+  team:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: team
+        # conditions:
+        # - active_loop: team_stats_form
 
 
 
@@ -94,12 +121,6 @@ slots:
     mappings:
       - type: from_entity
         entity: name
-
-  team:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: team
 
   amount:
     type: text
@@ -141,6 +162,12 @@ forms:
       - competition
       - season
       - round
+  
+  team_stats_all_form:
+    required_slots:
+      - competition
+      # - team_stats_type
+      - team
 
 
 responses:
@@ -155,6 +182,12 @@ responses:
 
   utter_round:
   - text: "Which round do you want to know about? **Limitation**: Depending on the season and competition, the number of rounds may vary."
+
+  utter_team_stats_type:
+  - text: "Do you want to check the stats for all seasons, one season, or a range of seasons?"
+
+  utter_team:
+  - text: "Which team do you want the stats of?"
 
   utter_goodbye:
   - text: "Bye"

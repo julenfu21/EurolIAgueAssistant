@@ -12,9 +12,10 @@ stories:
     - slot_was_set:
       - requested_slot: competition
     - action: utter_which_api
-    - intent: give_api
-    - slot_was_set:
-      - requested_slot: api_slot
+    - intent: give_standings
+    # - intent: give_api
+    # - slot_was_set:
+    #   - requested_slot: api_slot
     - action: utter_season
     - intent: give_season
     - slot_was_set:
@@ -23,11 +24,45 @@ stories:
     - intent: give_round
     - slot_was_set:
       - requested_slot: round
-      
+
     - slot_was_set:
       - requested_slot: null
     - active_loop: null
     - action: action_return_requested_standings
+
+
+- story: team_stats_all_seasons_path
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - active_loop: team_stats_all_form
+
+    - intent: give_competition
+    - slot_was_set:
+      - requested_slot: competition
+    - action: utter_which_api
+    - intent: give_team_stats
+    # - intent: give_api
+    # - slot_was_set:
+    #   - requested_slot: api_slot
+    - action: utter_team_stats_type
+    # - intent: give_team_stats_type
+    # - slot_was_set:
+    #   - requested_slot: team_stats_type
+    - intent: give_team_stats_all
+    
+    - action: action_return_teams_avaliable
+    - action: utter_team
+    - intent: give_team
+    - slot_was_set:
+      - requested_slot: team
+      
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: action_return_team_stats_all
+
+
 
 - story: name path
   steps:

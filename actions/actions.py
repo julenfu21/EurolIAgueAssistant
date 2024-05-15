@@ -45,6 +45,69 @@ class ActionReturnRequestedStandings(Action):
             )
     
             return [SlotSet("competition", None), SlotSet("season", None), SlotSet("round", None)]
+        
+
+class ActionReturnTeamsAvaliable(Action):
+
+    def name(self) -> Text:
+        return "action_return_teams_avaliable"
+
+    def run(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+        
+        competition = tracker.get_slot(key="competition")
+        if competition == 'Euroleague':
+            competition = 'E'
+        else:
+            competition = 'U'
+
+        team_stats = TeamStats(competition=competition)
+        df = team_stats.get_team_stats(endpoint='traditional')
+
+        teams = df['team.name'].tolist()
+        teams_str = ', '.join(teams)
+        dispatcher.utter_message(text=f"Teams available: {teams_str}")
+
+        return []
+    
+class ActionReturnTeamStats(Action):
+
+    def name(self) -> Text:
+        return "action_return_team_stats_all"
+
+    def run(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+
+        team_name = tracker.get_slot(key="team")
+        competition = tracker.get_slot(key="competition")
+        if competition == 'Euroleague':
+            competition = 'E'
+        else:
+            competition = 'U'
+
+        team_stats = TeamStats(competition=competition)
+        df = team_stats.get_team_stats(endpoint='traditional')
+        
+        # Poner más stats? Pedir cuales quiere el usuario?
+        desired_row = df[df['team.name'] == team_name]
+        games_played = desired_row['gamesPlayed'].iloc[0]
+        games_won = desired_row['gamesWon'].iloc[0]
+        games_lost = desired_row['gamesLost'].iloc[0]
+        points = desired_row['pointsScored'].iloc[0]
+
+        dispatcher.utter_message(
+            text=f"Team stats for {team_name}: \n Games played: {games_played} \n Games won: {games_won} \n Games lost: {games_lost} \n Points: {points}"
+        )
+
+        return [SlotSet("team", None)]
 
 
 class ActionReturnRequestedGameMetadata(Action):

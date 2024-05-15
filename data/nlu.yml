@@ -2,6 +2,49 @@ version: "3.1"
 
 nlu:
 
+# Si no va se pueden pedir los códigos, BKN, RMB, etc.
+- lookup: team
+  examples: |
+    - KK Buducnost
+    - ALBA Berlin
+    - BC Khimki
+    - LDLC ASVEL Villeurbanne
+    - Darussafaka Basketbol
+    - FC Bayern Munich
+    - Crvena Zvezda Meridianbet Belgrade
+    - Galatasaray Spor Kulubu
+    - Valencia Basket
+    - Bamberger Basketball GmbH
+    - KK Cibona
+    - EA7 Emporio Armani Milan
+    - Elan Bearnais Pau-Lacq-Orthez
+    - Zalgiris Kaunas
+    - Arka Gdynia
+    - Skyliners Frankfurt
+    - AS Monaco
+    - Pallacanestro Virtus Roma
+    - Virtus Segafredo Bologna
+    - Maccabi Playtika Tel Aviv
+    - Partizan Mozzart Bet Belgrade
+    - Fortitudo Pallacanestro Bologna 103
+    - Zenit St Petersburg
+    - Fenerbahce Beko Istanbul
+    - Baskonia Vitoria-Gasteiz
+    - Rytas Vilnius
+    - WKS Slask Wroclaw
+    - Anadolu Efes Istanbul
+    - KK Cedevita Olimpija
+    - UNICS Kazan
+    - AEK Athens
+    - Panathinaikos AKTOR Athens
+    - Montepaschi Siena
+    - Olympiacos Piraeus
+    - Benetton Basket Treviso
+    - Unicaja Malaga
+    - Real Madrid
+    - FC Barcelona
+    - CSKA Moscow'
+
 - intent: give_competition
   examples: |
     - [Euroleague](competition)
@@ -9,24 +52,37 @@ nlu:
     - [Eurocup](competition)
     - I want to know about the [Eurocup](competition)
 
-- intent: give_api
+# - intent: give_api
+#   examples: |
+#     - [Game Stats](api_slot)
+#     - [Standings](api_slot)
+#     - [Player Stats](api_slot)
+#     - [Team Stats](api_slot)
+#     - I want to know about the [Standings](api_slot)
+#     - I want to know about the [Game Stats](api_slot)
+#     - I want to know about the [Player Stats](api_slot)
+#     - I want to know about the [Team Stats](api_slot)
+#     - Tell me about the [Standings](api_slot)
+#     - Tell me about the [Game Stats](api_slot)
+#     - Tell me about the [Player Stats](api_slot)
+#     - Tell me about the [Team Stats](api_slot)
+#     - Check the [Standings](api_slot)
+#     - Check the [Game Stats](api_slot)
+#     - Check the [Player Stats](api_slot)
+#     - Check the [Team Stats](api_slot)
+
+- intent: give_standings
   examples: |
-    - [Game Stats](api_slot)
-    - [Standings](api_slot)
-    - [Player Stats](api_slot)
-    - [Team Stats](api_slot)
-    - I want to know about the [Standings](api_slot)
-    - I want to know about the [Game Stats](api_slot)
-    - I want to know about the [Player Stats](api_slot)
-    - I want to know about the [Team Stats](api_slot)
-    - Tell me about the [Standings](api_slot)
-    - Tell me about the [Game Stats](api_slot)
-    - Tell me about the [Player Stats](api_slot)
-    - Tell me about the [Team Stats](api_slot)
-    - Check the [Standings](api_slot)
-    - Check the [Game Stats](api_slot)
-    - Check the [Player Stats](api_slot)
-    - Check the [Team Stats](api_slot)
+    - [Standings](standings)
+    - I want to know about the [Standings](standings)
+    - Tell me about the [Standings](standings)
+    - Check the [Standings](standings)
+- intent: give_team_stats
+  examples: |
+    - [Team Stats](team_stats)
+    - I want to know about the [Team Stats](team_stats)
+    - Tell me about the [Team Stats](team_stats)
+    - Check the [Team Stats](team_stats)
 
 - intent: give_season
   examples: |
@@ -45,6 +101,41 @@ nlu:
     - [34](round)
     - I want to know aboot round [5](round)
     - Tell me about round [7](round)
+
+# - intent: give_team_stats_type
+#   examples: |
+#     - All seasons
+
+- intent: give_team_stats_all
+  examples: |
+    - All seasons
+    - All seasons, please
+    - I want to know about all seasons
+    - Tell me about all seasons
+
+- intent: give_team
+  examples: |
+    - [Baskonia](team)
+    - [Valencia](team)
+    - [Maccabi](team)
+    - [Real Madrid](team)
+    - [Barcelona](team)
+    - [CSKA](team)
+    - [Olympiacos](team)
+    - [Panathinaikos](team)
+    - [Fenerbahce](team)
+    - [Anadolu Efes](team)
+    - [Unicaja](team)
+    - [Benetton](team)
+    - [Montepaschi](team)
+    - [AEK](team)
+    - [UNICS](team)
+    - [Cedevita](team)
+    - [Efes](team)
+    - [Slask](team)
+    - [Rytas](team)
+
+
 
 
 - intent: greet
