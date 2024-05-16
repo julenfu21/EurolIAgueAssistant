@@ -72,20 +72,20 @@ nlu:
    - Check the [Game Stats](api_section)
 
 
-- intent: give_team_stat_type
+- intent: give_stat_type
   examples: |
-    - I want the stats of a [single season](team_stat_type)
-    - I want the stats of [all seasons](team_stat_type)
-    - [single season](team_stat_type)
-    - [all seasons](team_stat_type)
-    - Give me the stats of a [single season](team_stat_type)
-    - Give me the stats of [all seasons](team_stat_type)
-    - Stats of a [single season](team_stat_type)
-    - Stats of [all seasons](team_stat_type)
+    - I want the stats of a [single season](stat_type)
+    - I want the stats of [all seasons](stat_type)
+    - [single season](stat_type)
+    - [all seasons](stat_type)
+    - Give me the stats of a [single season](stat_type)
+    - Give me the stats of [all seasons](stat_type)
+    - Stats of a [single season](stat_type)
+    - Stats of [all seasons](stat_type)
 
 - intent: give_player_stat_type
   examples: |
-    - [single slayer](player_stat_type)
+    - [single player](player_stat_type)
     - [leaders](player_stat_type)
     - I want the stats of a [single player](player_stat_type)
     - I want the stats of the [leaders](player_stat_type)
