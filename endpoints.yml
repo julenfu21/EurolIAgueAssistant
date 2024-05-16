@@ -15,7 +15,7 @@ action_endpoint:
 
 nlg:
   type: rephrase
-  rephrase_all: true
+  # rephrase_all: true
   temperature: 0.1
   llm:
     type: "huggingface_hub"

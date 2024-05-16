@@ -303,10 +303,10 @@ responses:
   - text: "{competition} it is! What do you want to know about it, Standings, Team Stats or Player Stats?"
 
   utter_which_stat_type:
-  - text: "Which stat type do you want to check, single season or all seasons? **Limitation**: Story amount is limited so only all seasons is available for the Player Stats"
+  - text: "Which stat type do you want to check, single season or all seasons?"
 
   utter_which_player_stat_type:
-  - text: "Do you want to check the stats of a single player or the leaders of each category?"
+  - text: "Do you want to check the stats of a single player or the leaders of each category? **Limitation**: Story amount is limited so only all seasons is available for the Player Stats"
 
   utter_ask_leaders_stats_all_form_category:
   - text: "Which category do you want to know the leaders of? Please write it exactly as it is shown above."

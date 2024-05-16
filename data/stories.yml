@@ -136,9 +136,9 @@ stories:
     # The form should be activated after team_stats_all_form was run.
     - active_loop: team_stats_single_season_form
     - slot_was_set:
-      - requested_slot: team
-    - slot_was_set:
       - requested_slot: season
+    - slot_was_set:
+      - requested_slot: team
     # Form is deactivated
     - slot_was_set:
       - requested_slot: null
@@ -259,8 +259,8 @@ stories:
     - active_loop: leaders_stats_all_form
     - slot_was_set:
       - requested_slot: category
-    - slot_was_set:
-      - requested_slot: mode
+    # - slot_was_set:
+    #   - requested_slot: mode
     # Form is deactivated
     - slot_was_set:
       - requested_slot: null

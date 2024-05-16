@@ -330,7 +330,7 @@ class ActionReturnRequestedLeadersStatsAll(Action):
             competition = 'U'
 
         player_stats = PlayerStats(competition=competition)
-        df = player_stats.get_player_stats_leaders_all_seasons(stat_category = category, statistic_mode = mode, top_n = 10)
+        df = player_stats.get_player_stats_leaders_all_seasons(stat_category = category, statistic_mode = "PerGame", top_n = 10)
 
         leaders = df.drop(columns=['rank', 'playerCode', 'playerAbbreviatedName', 'imageUrl', 'teamImageUrl', 'timePlayed', 'secondsPlayed', 'possessions', 'clubCodes', 'abbreviatedClubNames', 'tvCodes', 'clubSeasonCodes'])
 
