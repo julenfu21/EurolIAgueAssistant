@@ -13,14 +13,14 @@
 action_endpoint:
   url: "http://localhost:5055/webhook"
 
-nlg:
-  type: rephrase
+# nlg:
+  # type: rephrase
   # rephrase_all: true
-  temperature: 0.1
-  llm:
-    type: "huggingface_hub"
-    repo_id: "google/gemma-1.1-2b-it"
-    task: "text-generation"
+  # temperature: 0.1
+  # llm:
+    # type: "huggingface_hub"
+    # repo_id: "google/gemma-1.1-2b-it"
+    # task: "text-generation"
 
 # Tracker store which is used to store the conversations.
 # By default the conversations are stored in memory.
