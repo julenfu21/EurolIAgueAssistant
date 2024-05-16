@@ -300,7 +300,7 @@ responses:
   - text: "Hey! I am a bot that can help you with Euroleague and Eurocup information. Which competition do you want to know about?"
 
   utter_which_api:
-  - text: "{competition} it is! What do you want to know about it, Standings, Team Stats, Player Stats or Game Stats?"
+  - text: "{competition} it is! What do you want to know about it, Standings, Team Stats or Player Stats?"
 
   utter_which_stat_type:
   - text: "Which stat type do you want to check, single season or all seasons? **Limitation**: Story amount is limited so only all seasons is available for the Player Stats"
