@@ -216,13 +216,13 @@ class ActionReturnRequestedPlayerStatsAll(Action):
             
 
             dispatcher.utter_message(
-                text=f"Player stats per game for {formatted_name} in {teams_played_for_string}: \n Games played: {games_played} \n Points: {points} \n "
+                text=f"Player stats per game for {player_name} in {teams_played_for_string}: \n Games played: {games_played} \n Points: {points} \n "
                     f"Assists: {assists} \n Rebounds: {rebounds} \n Steals: {steals} \n Blocks: {blocks} \n "
                     f"Turnovers: {turnovers} \n Pir: {pir}"
             )
         else:
             dispatcher.utter_message(
-                text=f"Player stats per game for {formatted_name} in teams {teams_played_for_string}: \n Games played: {games_played} \n Points: {points} \n "
+                text=f"Player stats per game for {player_name} in teams {teams_played_for_string}: \n Games played: {games_played} \n Points: {points} \n "
                     f"Assists: {assists} \n Rebounds: {rebounds} \n Steals: {steals} \n Blocks: {blocks} \n "
                     f"Turnovers: {turnovers} \n Pir: {pir}"
             )
