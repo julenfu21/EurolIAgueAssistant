@@ -11,6 +11,8 @@ stories:
 
 - story: standings_path (HAPPY path - v1)
   steps:
+    - intent: start
+    - action: utter_iamabot
     - intent: greet
     - action: utter_greet
     - intent: give_competition
@@ -94,6 +96,8 @@ stories:
 
 - story: team_stats_all_seasons_path (happy path - v1)
   steps:
+    - intent: start
+    - action: utter_iamabot
     - intent: greet
     - action: utter_greet
     - intent: give_competition
@@ -120,6 +124,8 @@ stories:
 
 - story: team_stats_single_season_path (happy path - v1)
   steps:
+    - intent: start
+    - action: utter_iamabot
     - intent: greet
     - action: utter_greet
     - intent: give_competition
@@ -207,6 +213,8 @@ stories:
 
 - story: single_player_stats_all_seasons_path (happy path - v1)
   steps:
+    - intent: start
+    - action: utter_iamabot
     - intent: greet
     - action: utter_greet
     - intent: give_competition
@@ -237,6 +245,8 @@ stories:
 
 - story: leaders_player_stats_all_seasons_path (happy path - v1)
   steps:
+    - intent: start
+    - action: utter_iamabot
     - intent: greet
     - action: utter_greet
     - intent: give_competition
