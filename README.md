@@ -3,7 +3,7 @@
 </div>
 <h1 align="center">
     EuroLAIgue Assistant
-</h1>images/euroleague_eurocup_logo.png
+</h1>
 
 > A chatbot developed using **Rasa** and **Python** to answer questions related to the Euroleague and Eurocup, 
 > leveraging the [euroleague_api](https://github.com/giasemidis/euroleague_api) by
