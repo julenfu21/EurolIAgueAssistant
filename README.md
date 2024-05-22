@@ -1,9 +1,13 @@
-# EuroLAIgue Assistant
-![EuroLAIgue Assistant Logo](images/euroleague_eurocup_logo.png)
+<div align="center">
+    <img src="images/euroleague_eurocup_logo.png" alt="EuroLAIgue Assistant Logo">
+</div>
+<h1 align="center">
+    EuroLAIgue Assistant
+</h1>images/euroleague_eurocup_logo.png
 
 > A chatbot developed using **Rasa** and **Python** to answer questions related to the Euroleague and Eurocup, 
-leveraging the [euroleague_api](https://github.com/giasemidis/euroleague_api) by
-[Georgios Giasemidis](https://github.com/giasemidis).
+> leveraging the [euroleague_api](https://github.com/giasemidis/euroleague_api) by
+> [Georgios Giasemidis](https://github.com/giasemidis).
 
 ## Table of Contents
 1. [Installation](#installation-) 📥
