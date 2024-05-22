@@ -1,6 +1,5 @@
 .idea
 .rasa
 models
-tests
 actions/__pycache__
 story_graph.dot

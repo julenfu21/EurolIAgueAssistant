@@ -1,0 +1,608 @@
+[
+  {
+    "text": "Eurocup",
+    "entities": [
+      {
+        "start": 0,
+        "end": 7,
+        "value": "Eurocup",
+        "entity": "competition"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Player Stats",
+    "entities": [
+      {
+        "start": 0,
+        "end": 12,
+        "value": "Player Stats",
+        "entity": "api_section"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Stats of the leaders",
+    "entities": [
+      {
+        "start": 13,
+        "end": 20,
+        "value": "leaders",
+        "entity": "player_stat_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Score",
+    "entities": [
+      {
+        "start": 0,
+        "end": 5,
+        "value": "Score",
+        "entity": "category"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Euroleague",
+    "entities": [
+      {
+        "start": 0,
+        "end": 10,
+        "value": "Euroleague",
+        "entity": "competition"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Player Stats",
+    "entities": [
+      {
+        "start": 0,
+        "end": 12,
+        "value": "Player Stats",
+        "entity": "api_section"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Stats of the leaders",
+    "entities": [
+      {
+        "start": 13,
+        "end": 20,
+        "value": "leaders",
+        "entity": "player_stat_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Steals",
+    "entities": [
+      {
+        "start": 0,
+        "end": 6,
+        "value": "Steals",
+        "entity": "category"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Eurocup",
+    "entities": [
+      {
+        "start": 0,
+        "end": 7,
+        "value": "Eurocup",
+        "entity": "competition"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Player Stats",
+    "entities": [
+      {
+        "start": 0,
+        "end": 12,
+        "value": "Player Stats",
+        "entity": "api_section"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Stats of the leaders",
+    "entities": [
+      {
+        "start": 13,
+        "end": 20,
+        "value": "leaders",
+        "entity": "player_stat_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "BlocksFavour",
+    "entities": [
+      {
+        "start": 0,
+        "end": 12,
+        "value": "BlocksFavour",
+        "entity": "category"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Euroleague",
+    "entities": [
+      {
+        "start": 0,
+        "end": 10,
+        "value": "Euroleague",
+        "entity": "competition"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "I want to know about the Standings",
+    "entities": [
+      {
+        "start": 25,
+        "end": 34,
+        "value": "Standings",
+        "entity": "api_section"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Season 2017, please",
+    "entities": [
+      {
+        "start": 7,
+        "end": 11,
+        "value": "2017",
+        "entity": "season"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "I want to know about round 10",
+    "entities": [
+      {
+        "start": 27,
+        "end": 29,
+        "value": "10",
+        "entity": "round"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "I want to know about the Eurocup",
+    "entities": [
+      {
+        "start": 25,
+        "end": 32,
+        "value": "Eurocup",
+        "entity": "competition"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "I want to know about the Standings",
+    "entities": [
+      {
+        "start": 25,
+        "end": 34,
+        "value": "Standings",
+        "entity": "api_section"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Tell me about season 2022",
+    "entities": [
+      {
+        "text": "Tell me about season 2022",
+        "start": 21,
+        "end": 25,
+        "entity": "season",
+        "value": "2022"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "7",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "7",
+        "entity": "round"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Euroleague",
+    "entities": [
+      {
+        "start": 0,
+        "end": 10,
+        "value": "Euroleague",
+        "entity": "competition"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Tell me about the Team Stats",
+    "entities": [
+      {
+        "start": 18,
+        "end": 28,
+        "value": "Team Stats",
+        "entity": "api_section"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Stats of a all seasons",
+    "entities": [
+      {
+        "start": 11,
+        "end": 22,
+        "value": "all seasons",
+        "entity": "stat_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Baskonia Vitoria-Gasteiz",
+    "entities": [
+      {
+        "start": 0,
+        "end": 24,
+        "value": "Baskonia Vitoria-Gasteiz",
+        "entity": "team"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Eurocup",
+    "entities": [
+      {
+        "start": 0,
+        "end": 7,
+        "value": "Eurocup",
+        "entity": "competition"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Tell me about the Team Stats",
+    "entities": [
+      {
+        "start": 18,
+        "end": 28,
+        "value": "Team Stats",
+        "entity": "api_section"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Stats of a all seasons",
+    "entities": [
+      {
+        "start": 11,
+        "end": 22,
+        "value": "all seasons",
+        "entity": "stat_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Skyliners Frankfurt",
+    "entities": [
+      {
+        "text": "Skyliners Frankfurt",
+        "start": 0,
+        "end": 19,
+        "entity": "team",
+        "value": "Skyliners Frankfurt"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Euroleague",
+    "entities": [
+      {
+        "start": 0,
+        "end": 10,
+        "value": "Euroleague",
+        "entity": "competition"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Check the Team Stats",
+    "entities": [
+      {
+        "start": 10,
+        "end": 20,
+        "value": "Team Stats",
+        "entity": "api_section"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "I want the stats of a single season",
+    "entities": [
+      {
+        "start": 22,
+        "end": 35,
+        "value": "single season",
+        "entity": "stat_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "2019",
+    "entities": [
+      {
+        "text": "2019",
+        "start": 0,
+        "end": 4,
+        "entity": "season",
+        "value": "2019"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Valencia Basket",
+    "entities": [
+      {
+        "start": 0,
+        "end": 15,
+        "value": "Valencia Basket",
+        "entity": "team"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Eurocup",
+    "entities": [
+      {
+        "start": 0,
+        "end": 7,
+        "value": "Eurocup",
+        "entity": "competition"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Check the Team Stats",
+    "entities": [
+      {
+        "start": 10,
+        "end": 20,
+        "value": "Team Stats",
+        "entity": "api_section"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "I want the stats of a single season",
+    "entities": [
+      {
+        "start": 22,
+        "end": 35,
+        "value": "single season",
+        "entity": "stat_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "2016",
+    "entities": [
+      {
+        "text": "2016",
+        "start": 0,
+        "end": 4,
+        "entity": "season",
+        "value": "2016"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "ALBA Berlin",
+    "entities": [
+      {
+        "text": "ALBA Berlin",
+        "start": 0,
+        "end": 11,
+        "entity": "team",
+        "value": "ALBA Berlin"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "I want to know about the Euroleague",
+    "entities": [
+      {
+        "start": 25,
+        "end": 35,
+        "value": "Euroleague",
+        "entity": "competition"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Tell me about the Player Stats",
+    "entities": [
+      {
+        "start": 18,
+        "end": 30,
+        "value": "Player Stats",
+        "entity": "api_section"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "I want the stats of a single player",
+    "entities": [
+      {
+        "start": 22,
+        "end": 35,
+        "value": "single player",
+        "entity": "player_stat_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Alex Abrines",
+    "entities": [
+      {
+        "start": 0,
+        "end": 12,
+        "value": "Alex Abrines",
+        "entity": "player"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Euroleague",
+    "entities": [
+      {
+        "start": 0,
+        "end": 10,
+        "value": "Euroleague",
+        "entity": "competition"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Tell me about the Player Stats",
+    "entities": [
+      {
+        "start": 18,
+        "end": 30,
+        "value": "Player Stats",
+        "entity": "api_section"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "I want the stats of a single player",
+    "entities": [
+      {
+        "start": 22,
+        "end": 35,
+        "value": "single player",
+        "entity": "player_stat_type"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Jayson Granger",
+    "entities": [
+      {
+        "start": 0,
+        "end": 14,
+        "value": "Jayson Granger",
+        "entity": "player"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Euroleague",
+    "entities": [
+      {
+        "start": 0,
+        "end": 10,
+        "value": "Euroleague",
+        "entity": "competition"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Player Stats",
+    "entities": [
+      {
+        "start": 0,
+        "end": 12,
+        "value": "Player Stats",
+        "entity": "api_section"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "ValuationStats of the leaders",
+    "entities": [
+      {
+        "text": "ValuationStats of the leaders",
+        "start": 22,
+        "end": 29,
+        "entity": "player_stat_type",
+        "value": "leaders"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "Valuation",
+    "entities": [
+      {
+        "start": 0,
+        "end": 9,
+        "value": "Valuation",
+        "entity": "category"
+      }
+    ],
+    "predicted_entities": []
+  }
+]

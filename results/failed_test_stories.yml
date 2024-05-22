@@ -1,0 +1,360 @@
+version: "3.1"
+stories:
+- story: leaders_player_stats_all_seasons_path [H1.2] (happy path - v1) (/home/jfu08/PycharmProjects/EurolIAgueAssistant/tests/test_stories.yml)
+  steps:
+  - intent: start
+  - action: utter_iamabot
+  - intent: greet
+  - action: utter_greet
+  - intent: give_competition
+    entities:
+    - competition: Eurocup
+  - slot_was_set:
+    - competition: Eurocup
+  - action: utter_which_api
+  - intent: give_api_section
+    entities:
+    - api_section: Player Stats
+  - slot_was_set:
+    - api_section: Player Stats
+  - slot_was_set:
+    - api_section: Player Stats
+  - action: utter_which_player_stat_type  # predicted: utter_which_stat_type
+  - intent: give_player_stat_type
+    entities:
+    - player_stat_type: leaders
+  - slot_was_set:
+    - player_stat_type: leaders
+  - slot_was_set:
+    - player_stat_type: leaders
+  - action: action_return_available_leaders
+  - action: leaders_stats_all_form
+  - active_loop: leaders_stats_all_form
+  - intent: give_category
+    entities:
+    - category: Score
+  - action: leaders_stats_all_form
+  - active_loop: null
+  - action: action_return_requested_leaders_stats_all  # predicted: action_default_fallback
+- story: leaders_player_stats_all_seasons_path [H1.3] (happy path - v1) (/home/jfu08/PycharmProjects/EurolIAgueAssistant/tests/test_stories.yml)
+  steps:
+  - intent: start
+  - action: utter_iamabot
+  - intent: greet
+  - action: utter_greet
+  - intent: give_competition
+    entities:
+    - competition: Euroleague
+  - slot_was_set:
+    - competition: Euroleague
+  - action: utter_which_api
+  - intent: give_api_section
+    entities:
+    - api_section: Player Stats
+  - slot_was_set:
+    - api_section: Player Stats
+  - slot_was_set:
+    - api_section: Player Stats
+  - action: utter_which_player_stat_type  # predicted: utter_which_stat_type
+  - intent: give_player_stat_type
+    entities:
+    - player_stat_type: leaders
+  - slot_was_set:
+    - player_stat_type: leaders
+  - slot_was_set:
+    - player_stat_type: leaders
+  - action: action_return_available_leaders
+  - action: leaders_stats_all_form
+  - active_loop: leaders_stats_all_form
+  - intent: give_category
+    entities:
+    - category: Steals
+  - action: leaders_stats_all_form
+  - active_loop: null
+  - action: action_return_requested_leaders_stats_all  # predicted: action_default_fallback
+- story: leaders_player_stats_all_seasons_path [H1.2] (happy path - v1) (/home/jfu08/PycharmProjects/EurolIAgueAssistant/tests/test_stories.yml)
+  steps:
+  - intent: start
+  - action: utter_iamabot
+  - intent: greet
+  - action: utter_greet
+  - intent: give_competition
+    entities:
+    - competition: Eurocup
+  - slot_was_set:
+    - competition: Eurocup
+  - action: utter_which_api
+  - intent: give_api_section
+    entities:
+    - api_section: Player Stats
+  - slot_was_set:
+    - api_section: Player Stats
+  - slot_was_set:
+    - api_section: Player Stats
+  - action: utter_which_player_stat_type  # predicted: utter_which_stat_type
+  - intent: give_player_stat_type
+    entities:
+    - player_stat_type: leaders
+  - slot_was_set:
+    - player_stat_type: leaders
+  - slot_was_set:
+    - player_stat_type: leaders
+  - action: action_return_available_leaders
+  - action: leaders_stats_all_form
+  - active_loop: leaders_stats_all_form
+  - intent: give_category
+    entities:
+    - category: BlocksFavour
+  - action: leaders_stats_all_form
+  - active_loop: null
+  - action: action_return_requested_leaders_stats_all  # predicted: action_default_fallback
+- story: standings_path [H1.2] (HAPPY path - v1) (/home/jfu08/PycharmProjects/EurolIAgueAssistant/tests/test_stories.yml)
+  steps:
+  - intent: start
+  - action: utter_iamabot
+  - intent: greet
+  - action: utter_greet
+  - intent: give_competition
+    entities:
+    - competition: Eurocup
+  - slot_was_set:
+    - competition: Eurocup
+  - action: utter_which_api
+  - intent: give_api_section
+    entities:
+    - api_section: Standings
+  - slot_was_set:
+    - api_section: Standings
+  - slot_was_set:
+    - api_section: Standings
+  - action: standings_form
+  - active_loop: standings_form
+  - intent: give_season
+    entities:
+    - season: '2022'  # predicted: round: 2022
+  - action: standings_form
+  - intent: give_round
+    entities:
+    - round: '7'
+  - action: standings_form
+  - active_loop: null
+  - action: action_return_requested_standings
+- story: team_stats_all_seasons_path [H1.2] (HAPPY path - v1) (/home/jfu08/PycharmProjects/EurolIAgueAssistant/tests/test_stories.yml)
+  steps:
+  - intent: start
+  - action: utter_iamabot
+  - intent: greet
+  - action: utter_greet
+  - intent: give_competition
+    entities:
+    - competition: Eurocup
+  - slot_was_set:
+    - competition: Eurocup
+  - action: utter_which_api
+  - intent: give_api_section
+    entities:
+    - api_section: Team Stats
+  - slot_was_set:
+    - api_section: Team Stats
+  - slot_was_set:
+    - api_section: Team Stats
+  - action: utter_which_stat_type
+  - intent: give_stat_type
+    entities:
+    - stat_type: all seasons
+  - slot_was_set:
+    - stat_type: all seasons
+  - slot_was_set:
+    - stat_type: all seasons
+  - action: team_stats_all_form
+  - active_loop: team_stats_all_form
+  - intent: give_team  # predicted: give_player: [Skyliners Frankfurt](player)
+    entities:
+    - team: Skyliners Frankfurt  # predicted: player: Skyliners Frankfurt
+  - action: team_stats_all_form
+  - active_loop: null
+  - action: action_return_requested_team_stats_all
+- story: team_stats_single_season_path [H1.1] (HAPPY path - v1) (/home/jfu08/PycharmProjects/EurolIAgueAssistant/tests/test_stories.yml)
+  steps:
+  - intent: start
+  - action: utter_iamabot
+  - intent: greet
+  - action: utter_greet
+  - intent: give_competition
+    entities:
+    - competition: Euroleague
+  - slot_was_set:
+    - competition: Euroleague
+  - action: utter_which_api
+  - intent: give_api_section
+    entities:
+    - api_section: Team Stats
+  - slot_was_set:
+    - api_section: Team Stats
+  - slot_was_set:
+    - api_section: Team Stats
+  - action: utter_which_stat_type
+  - intent: give_stat_type
+    entities:
+    - stat_type: single season
+  - slot_was_set:
+    - stat_type: single season
+  - slot_was_set:
+    - stat_type: single season
+  - action: team_stats_single_season_form
+  - active_loop: team_stats_single_season_form
+  - intent: give_season  # predicted: give_round: [2019](round)
+    entities:
+    - season: '2019'  # predicted: round: 2019
+  - action: team_stats_single_season_form
+  - intent: give_team
+    entities:
+    - team: Valencia Basket
+  - action: team_stats_single_season_form
+  - active_loop: null
+  - action: action_return_requested_team_stats_single_season
+- story: team_stats_single_season_path [H1.2] (HAPPY path - v1) (/home/jfu08/PycharmProjects/EurolIAgueAssistant/tests/test_stories.yml)
+  steps:
+  - intent: start
+  - action: utter_iamabot
+  - intent: greet
+  - action: utter_greet
+  - intent: give_competition
+    entities:
+    - competition: Eurocup
+  - slot_was_set:
+    - competition: Eurocup
+  - action: utter_which_api
+  - intent: give_api_section
+    entities:
+    - api_section: Team Stats
+  - slot_was_set:
+    - api_section: Team Stats
+  - slot_was_set:
+    - api_section: Team Stats
+  - action: utter_which_stat_type
+  - intent: give_stat_type
+    entities:
+    - stat_type: single season
+  - slot_was_set:
+    - stat_type: single season
+  - slot_was_set:
+    - stat_type: single season
+  - action: team_stats_single_season_form
+  - active_loop: team_stats_single_season_form
+  - intent: give_season  # predicted: give_round: [2016](round)
+    entities:
+    - season: '2016'  # predicted: round: 2016
+  - action: team_stats_single_season_form
+  - intent: give_team
+    entities:
+    - team: ALBA Berlin  # predicted: player: ALBA Berlin
+  - action: team_stats_single_season_form
+  - active_loop: null
+  - action: action_return_requested_team_stats_single_season
+- story: single_player_stats_all_seasons_path [H1.1] (happy path - v1) (/home/jfu08/PycharmProjects/EurolIAgueAssistant/tests/test_stories.yml)
+  steps:
+  - intent: start
+  - action: utter_iamabot
+  - intent: greet
+  - action: utter_greet
+  - intent: give_competition
+    entities:
+    - competition: Euroleague
+  - slot_was_set:
+    - competition: Euroleague
+  - action: utter_which_api
+  - intent: give_api_section
+    entities:
+    - api_section: Player Stats
+  - slot_was_set:
+    - api_section: Player Stats
+  - slot_was_set:
+    - api_section: Player Stats
+  - action: utter_which_player_stat_type  # predicted: utter_which_stat_type
+  - intent: give_player_stat_type
+    entities:
+    - player_stat_type: single player
+  - slot_was_set:
+    - player_stat_type: single player
+  - slot_was_set:
+    - player_stat_type: single player
+  - action: player_stats_all_form
+  - active_loop: player_stats_all_form
+  - intent: give_player
+    entities:
+    - player: Alex Abrines
+  - action: player_stats_all_form
+  - active_loop: null
+  - action: action_return_requested_player_stats_all
+- story: single_player_stats_all_seasons_path [H1.2] (happy path - v1) (/home/jfu08/PycharmProjects/EurolIAgueAssistant/tests/test_stories.yml)
+  steps:
+  - intent: start
+  - action: utter_iamabot
+  - intent: greet
+  - action: utter_greet
+  - intent: give_competition
+    entities:
+    - competition: Euroleague
+  - slot_was_set:
+    - competition: Euroleague
+  - action: utter_which_api
+  - intent: give_api_section
+    entities:
+    - api_section: Player Stats
+  - slot_was_set:
+    - api_section: Player Stats
+  - slot_was_set:
+    - api_section: Player Stats
+  - action: utter_which_player_stat_type  # predicted: utter_which_stat_type
+  - intent: give_player_stat_type
+    entities:
+    - player_stat_type: single player
+  - slot_was_set:
+    - player_stat_type: single player
+  - slot_was_set:
+    - player_stat_type: single player
+  - action: player_stats_all_form
+  - active_loop: player_stats_all_form
+  - intent: give_player
+    entities:
+    - player: Jayson Granger
+  - action: player_stats_all_form
+  - active_loop: null
+  - action: action_return_requested_player_stats_all
+- story: leaders_player_stats_all_seasons_path [H1.1] (happy path - v1) (/home/jfu08/PycharmProjects/EurolIAgueAssistant/tests/test_stories.yml)
+  steps:
+  - intent: start
+  - action: utter_iamabot
+  - intent: greet
+  - action: utter_greet
+  - intent: give_competition
+    entities:
+    - competition: Euroleague
+  - slot_was_set:
+    - competition: Euroleague
+  - action: utter_which_api
+  - intent: give_api_section
+    entities:
+    - api_section: Player Stats
+  - slot_was_set:
+    - api_section: Player Stats
+  - slot_was_set:
+    - api_section: Player Stats
+  - action: utter_which_player_stat_type  # predicted: utter_which_stat_type
+  - intent: give_player_stat_type
+    entities:
+    - player_stat_type: leaders
+  - slot_was_set:
+    - player_stat_type: leaders
+  - slot_was_set:
+    - player_stat_type: leaders
+  - action: action_return_available_leaders
+  - action: leaders_stats_all_form
+  - active_loop: leaders_stats_all_form
+  - intent: give_category
+    entities:
+    - category: Valuation
+  - action: leaders_stats_all_form
+  - active_loop: null
+  - action: action_return_requested_leaders_stats_all  # predicted: action_default_fallback

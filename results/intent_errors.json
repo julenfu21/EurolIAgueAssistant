@@ -1,0 +1,26 @@
+[
+  {
+    "text": "2023",
+    "intent": "give_season",
+    "intent_prediction": {
+      "name": "give_round",
+      "confidence": 0.6868204474449158
+    }
+  },
+  {
+    "text": "2002",
+    "intent": "give_season",
+    "intent_prediction": {
+      "name": "give_round",
+      "confidence": 0.6868204474449158
+    }
+  },
+  {
+    "text": "2018",
+    "intent": "give_season",
+    "intent_prediction": {
+      "name": "give_round",
+      "confidence": 0.6868204474449158
+    }
+  }
+]

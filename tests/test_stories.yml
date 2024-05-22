@@ -1,0 +1,438 @@
+stories:
+
+
+###########################
+#                         #
+#        STANDINGS        #
+#                         #
+###########################
+
+- story: standings_path [H1.1] (HAPPY path - v1)
+  steps:
+  - user: |
+      /start
+    intent: start
+  - action: utter_iamabot
+  - user: |
+      hey
+    intent: greet
+  - action: utter_greet
+  - user: |
+      [Euroleague](competition)
+    intent: give_competition
+  - action: utter_which_api
+  - user: |
+      I want to know about the [Standings](api_section)
+    intent: give_api_section
+  - slot_was_set:
+    - api_section: "Standings"
+  - action: standings_form
+  - active_loop: standings_form
+  - user: |
+      Season [2017](season), please
+    intent: give_season
+  - action: standings_form
+  - user: |
+      I want to know about round [10](round)
+    intent: give_round
+  - action: standings_form
+  - active_loop: null
+  - action: action_return_requested_standings
+
+- story: standings_path [H1.2] (HAPPY path - v1)
+  steps:
+  - user: |
+      /start
+    intent: start
+  - action: utter_iamabot
+  - user: |
+      hello
+    intent: greet
+  - action: utter_greet
+  - user: |
+      I want to know about the [Eurocup](competition)
+    intent: give_competition
+  - action: utter_which_api
+  - user: |
+      I want to know about the [Standings](api_section)
+    intent: give_api_section
+  - slot_was_set:
+    - api_section: "Standings"
+  - action: standings_form
+  - active_loop: standings_form
+  - user: |
+      Tell me about season [2022](season)
+    intent: give_season
+  - action: standings_form
+  - user: |
+      [7](round)
+    intent: give_round
+  - action: standings_form
+  - active_loop: null
+  - action: action_return_requested_standings
+
+
+############################
+#                          #
+#        TEAM STATS        #
+#                          #
+############################
+
+- story: team_stats_all_seasons_path [H1.1] (HAPPY path - v1)
+  steps:
+  - user: |
+      /start
+    intent: start
+  - action: utter_iamabot
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet
+  - user: |
+      [Euroleague](competition)
+    intent: give_competition
+  - action: utter_which_api
+  - user: |
+      Tell me about the [Team Stats](api_section)
+    intent: give_api_section
+  - slot_was_set:
+    - api_section: "Team Stats"
+  - action: utter_which_stat_type
+  - user: |
+      Stats of a [all seasons](stat_type)
+    intent: give_stat_type
+  - slot_was_set:
+    - stat_type: "all seasons"
+  - action: team_stats_all_form
+  - active_loop: team_stats_all_form
+  - user: |
+      [Baskonia Vitoria-Gasteiz](team)
+    intent: give_team
+  - action: team_stats_all_form
+  - active_loop: null
+  - action: action_return_requested_team_stats_all
+
+- story: team_stats_all_seasons_path [H1.2] (HAPPY path - v1)
+  steps:
+  - user: |
+      /start
+    intent: start
+  - action: utter_iamabot
+  - user: |
+      hello there
+    intent: greet
+  - action: utter_greet
+  - user: |
+      [Eurocup](competition)
+    intent: give_competition
+  - action: utter_which_api
+  - user: |
+      Tell me about the [Team Stats](api_section)
+    intent: give_api_section
+  - slot_was_set:
+    - api_section: "Team Stats"
+  - action: utter_which_stat_type
+  - user: |
+      Stats of a [all seasons](stat_type)
+    intent: give_stat_type
+  - slot_was_set:
+    - stat_type: "all seasons"
+  - action: team_stats_all_form
+  - active_loop: team_stats_all_form
+  - user: |
+      [Skyliners Frankfurt](team)
+    intent: give_team
+  - action: team_stats_all_form
+  - active_loop: null
+  - action: action_return_requested_team_stats_all
+
+- story: team_stats_single_season_path [H1.1] (HAPPY path - v1)
+  steps:
+  - user: |
+      /start
+    intent: start
+  - action: utter_iamabot
+  - user: |
+      good morning
+    intent: greet
+  - action: utter_greet
+  - user: |
+      [Euroleague](competition)
+    intent: give_competition
+  - action: utter_which_api
+  - user: |
+      Check the [Team Stats](api_section)
+    intent: give_api_section
+  - slot_was_set:
+    - api_section: "Team Stats"
+  - action: utter_which_stat_type
+  - user: |
+      I want the stats of a [single season](stat_type)
+    intent: give_stat_type
+  - slot_was_set:
+    - stat_type: "single season"
+  - action: team_stats_single_season_form
+  - active_loop: team_stats_single_season_form
+  - user: |
+      [2019](season)
+    intent: give_season
+  - action: team_stats_single_season_form
+  - user: |
+      [Valencia Basket](team)
+    intent: give_team
+  - action: team_stats_single_season_form
+  - active_loop: null
+  - action: action_return_requested_team_stats_single_season
+
+- story: team_stats_single_season_path [H1.2] (HAPPY path - v1)
+  steps:
+  - user: |
+      /start
+    intent: start
+  - action: utter_iamabot
+  - user: |
+      good evening
+    intent: greet
+  - action: utter_greet
+  - user: |
+      [Eurocup](competition)
+    intent: give_competition
+  - action: utter_which_api
+  - user: |
+      Check the [Team Stats](api_section)
+    intent: give_api_section
+  - slot_was_set:
+    - api_section: "Team Stats"
+  - action: utter_which_stat_type
+  - user: |
+      I want the stats of a [single season](stat_type)
+    intent: give_stat_type
+  - slot_was_set:
+    - stat_type: "single season"
+  - action: team_stats_single_season_form
+  - active_loop: team_stats_single_season_form
+  - user: |
+      [2016](season)
+    intent: give_season
+  - action: team_stats_single_season_form
+  - user: |
+      [ALBA Berlin](team)
+    intent: give_team
+  - action: team_stats_single_season_form
+  - active_loop: null
+  - action: action_return_requested_team_stats_single_season
+
+
+############################
+#                          #
+#       PLAYER STATS       #
+#                          #
+############################
+
+- story: single_player_stats_all_seasons_path [H1.1] (happy path - v1)
+  steps:
+  - user: |
+      /start
+    intent: start
+  - action: utter_iamabot
+  - user: |
+      hey there
+    intent: greet
+  - action: utter_greet
+  - user: |
+      I want to know about the [Euroleague](competition)
+    intent: give_competition
+  - action: utter_which_api
+  - user: |
+      Tell me about the [Player Stats](api_section)
+    intent: give_api_section
+  - slot_was_set:
+    - api_section: "Player Stats"
+  - action: utter_which_player_stat_type
+  - user: |
+      I want the stats of a [single player](player_stat_type)
+    intent: give_player_stat_type
+  - slot_was_set:
+    - player_stat_type: "single player"
+  - action: player_stats_all_form
+  - active_loop: player_stats_all_form
+  - user: |
+      [Alex Abrines](player)
+    intent: give_player
+  - action: player_stats_all_form
+  - active_loop: null
+  - action: action_return_requested_player_stats_all
+
+- story: single_player_stats_all_seasons_path [H1.2] (happy path - v1)
+  steps:
+  - user: |
+      /start
+    intent: start
+  - action: utter_iamabot
+  - user: |
+      hey dude
+    intent: greet
+  - action: utter_greet
+  - user: |
+      [Euroleague](competition)
+    intent: give_competition
+  - action: utter_which_api
+  - user: |
+      Tell me about the [Player Stats](api_section)
+    intent: give_api_section
+  - slot_was_set:
+    - api_section: "Player Stats"
+  - action: utter_which_player_stat_type
+  - user: |
+      I want the stats of a [single player](player_stat_type)
+    intent: give_player_stat_type
+  - slot_was_set:
+    - player_stat_type: "single player"
+  - action: player_stats_all_form
+  - active_loop: player_stats_all_form
+  - user: |
+      [Jayson Granger](player)
+    intent: give_player
+  - action: player_stats_all_form
+  - active_loop: null
+  - action: action_return_requested_player_stats_all
+
+- story: leaders_player_stats_all_seasons_path [H1.1] (happy path - v1)
+  steps:
+  - user: |
+      /start
+    intent: start
+  - action: utter_iamabot
+  - user: |
+      good afternoon
+    intent: greet
+  - action: utter_greet
+  - user: |
+      [Euroleague](competition)
+    intent: give_competition
+  - action: utter_which_api
+  - user: |
+      [Player Stats](api_section)
+    intent: give_api_section
+  - slot_was_set:
+    - api_section: "Player Stats"
+  - action: utter_which_player_stat_type
+  - user: |
+      ValuationStats of the [leaders](player_stat_type)
+    intent: give_player_stat_type
+  - slot_was_set:
+    - player_stat_type: "leaders"
+  - action: action_return_available_leaders
+  - action: leaders_stats_all_form
+  - active_loop: leaders_stats_all_form
+  - user: |
+      [Valuation](category)
+    intent: give_category
+  - action: leaders_stats_all_form
+  - active_loop: null
+  - action: action_return_requested_leaders_stats_all
+
+- story: leaders_player_stats_all_seasons_path [H1.2] (happy path - v1)
+  steps:
+  - user: |
+      /start
+    intent: start
+  - action: utter_iamabot
+  - user: |
+      good morning
+    intent: greet
+  - action: utter_greet
+  - user: |
+      [Eurocup](competition)
+    intent: give_competition
+  - action: utter_which_api
+  - user: |
+      [Player Stats](api_section)
+    intent: give_api_section
+  - slot_was_set:
+    - api_section: "Player Stats"
+  - action: utter_which_player_stat_type
+  - user: |
+      Stats of the [leaders](player_stat_type)
+    intent: give_player_stat_type
+  - slot_was_set:
+    - player_stat_type: "leaders"
+  - action: action_return_available_leaders
+  - action: leaders_stats_all_form
+  - active_loop: leaders_stats_all_form
+  - user: |
+      [Score](category)
+    intent: give_category
+  - action: leaders_stats_all_form
+  - active_loop: null
+  - action: action_return_requested_leaders_stats_all
+
+- story: leaders_player_stats_all_seasons_path [H1.3] (happy path - v1)
+  steps:
+  - user: |
+      /start
+    intent: start
+  - action: utter_iamabot
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet
+  - user: |
+      [Euroleague](competition)
+    intent: give_competition
+  - action: utter_which_api
+  - user: |
+      [Player Stats](api_section)
+    intent: give_api_section
+  - slot_was_set:
+    - api_section: "Player Stats"
+  - action: utter_which_player_stat_type
+  - user: |
+      Stats of the [leaders](player_stat_type)
+    intent: give_player_stat_type
+  - slot_was_set:
+    - player_stat_type: "leaders"
+  - action: action_return_available_leaders
+  - action: leaders_stats_all_form
+  - active_loop: leaders_stats_all_form
+  - user: |
+      [Steals](category)
+    intent: give_category
+  - action: leaders_stats_all_form
+  - active_loop: null
+  - action: action_return_requested_leaders_stats_all
+
+- story: leaders_player_stats_all_seasons_path [H1.2] (happy path - v1)
+  steps:
+  - user: |
+      /start
+    intent: start
+  - action: utter_iamabot
+  - user: |
+      hey there
+    intent: greet
+  - action: utter_greet
+  - user: |
+      [Eurocup](competition)
+    intent: give_competition
+  - action: utter_which_api
+  - user: |
+      [Player Stats](api_section)
+    intent: give_api_section
+  - slot_was_set:
+    - api_section: "Player Stats"
+  - action: utter_which_player_stat_type
+  - user: |
+      Stats of the [leaders](player_stat_type)
+    intent: give_player_stat_type
+  - slot_was_set:
+    - player_stat_type: "leaders"
+  - action: action_return_available_leaders
+  - action: leaders_stats_all_form
+  - active_loop: leaders_stats_all_form
+  - user: |
+      [BlocksFavour](category)
+    intent: give_category
+  - action: leaders_stats_all_form
+  - active_loop: null
+  - action: action_return_requested_leaders_stats_all
