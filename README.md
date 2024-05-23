@@ -11,7 +11,7 @@
 
 ## Table of Contents
 1. [Installation](#installation-) 📥
-2. [Usage](#usage-) 🛠️
+2. [Usage](#usage-) 🔨 ️
    1. [Start Chatting](#start-chatting-) 💬
    2. [Test and Evaluate Rasa Model](#test-and-evaluate-rasa-model-) 🧪
 
@@ -81,7 +81,7 @@ git clone https://github.com/julenfu21/EurolIAgueAssistant.git
       source ~/.bashrc
       ```
 
-## Usage 🛠️
+## Usage 🔨
 
 ### Start chatting 💬
 
