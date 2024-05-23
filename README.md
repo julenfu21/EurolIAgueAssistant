@@ -84,7 +84,9 @@ git clone https://github.com/julenfu21/EurolIAgueAssistant.git
    section. After completing the steps, a message similar to the one below will be received with the Rasa Pro license
    key:
 
-   ![Rasa License Mail Sample](docs/images/rasa_license_mail_sample.png)
+   <div align="center">
+      <img src="docs/images/rasa_license_mail_sample.png" alt="Rasa License Mail Sample">
+   </div>
    
    4. Set the `RASA_PRO_LICENSE` environment variable:
       - Temporary:
@@ -137,17 +139,26 @@ After testing the model the following charts are obtained:
 When it comes to the **intents** predicted by the Rasa model, the figure below shows that most of the time the
 prediction is correct. However, it can be observed that more than half of the times the `give_season` is confused with 
 the`give_round` intent.
-![Intent Confusion Matrix](results/intent_confusion_matrix.png)
+
+<div align="center">
+   <img src="results/intent_confusion_matrix.png" alt="Intent Confusion Matrix">
+</div>
 
 Regarding the **entities'** prediction, most of the predictions are correct, but once again the model struggles when 
 trying to identify a `season` entity, which 80% of the times is predicted as a `round` entity.
-![Entity Confusion Matrix](results/DIETClassifier_confusion_matrix.png)
+
+<div align="center">
+   <img src="results/DIETClassifier_confusion_matrix.png" alt="Entity Confusion Matrix">
+</div>
 
 Finally, the actions to be performed by the chatbot are generally well predicted. Nonetheless, the model always fails
 to predict the `action_return_requested_player_stats_all` and instead predicts an `action_default_fallback` (this
 means that the model cannot identify an intent with enough confidence), and the `utter_which_player_stat_type` is
 also mistaken with the `utter_which_stat_type` action.
-![Action Confusion Matrix](results/story_confusion_matrix.png)
+
+<div align="center">
+   <img src="results/story_confusion_matrix.png" alt="Action Confusion Matrix">
+</div>
 
 ## Limitations ⛔
 - **Euroleague-api** is still in development and may have some errors.
