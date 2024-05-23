@@ -2,6 +2,8 @@
     <img src="docs/images/euroLAIgue_assistant_logo.png" alt="EuroLAIgue Assistant Logo">
 </div>
 
+---
+
 > A chatbot developed using **Rasa** and **Python** to answer questions related to the Euroleague and Eurocup, 
 > leveraging the [euroleague_api](https://github.com/giasemidis/euroleague_api) by
 > [Georgios Giasemidis](https://github.com/giasemidis).
