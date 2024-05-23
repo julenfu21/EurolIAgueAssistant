@@ -176,7 +176,15 @@ the competition's history or the format).
 - The number of stories might be limited.
 
 ## Demo 🎥
-**PASTE VIDEO LINK**
+
+
+https://github.com/julenfu21/EurolIAgueAssistant/assets/71083472/5e1b2234-503f-4f61-a8ef-b363764a0c55
+
+
+
+https://github.com/julenfu21/EurolIAgueAssistant/assets/71083472/a79a4db0-9d27-4c78-9ca5-61f04e0eb003
+
+
 
 ## Future Work 🚀
 - Expand the project with more stories and statistics.
