@@ -21,7 +21,7 @@ intents:
   # - give_...
   - interrupt_form
   - bot_challenge
-  - start
+  # - start
 
 
 entities:

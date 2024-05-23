@@ -2,11 +2,11 @@ version: "3.1"
 
 nlu:
 
-- intent: start
-  examples: |
-    - /start
+# - intent: start
+#   examples: |
+#     - /start
 
-# Si no va se pueden pedir los códigos, BKN, RMB, etc.
+# Maybe add team codes? (e.g. BKN, VIR, RMB, etc.)
 - lookup: team
   examples: |
     - KK Buducnost

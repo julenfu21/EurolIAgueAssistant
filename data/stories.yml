@@ -3,6 +3,8 @@ version: "3.1"
 stories:
 
 
+# Commented out stories due to rasa error when too much/long stories are present.
+
 ###########################
 #                         #
 #        STANDINGS        #
@@ -11,14 +13,14 @@ stories:
 
 - story: standings_path (HAPPY path - v1)
   steps:
-    - intent: start
+    # - intent: start
     - action: utter_iamabot
     - intent: greet
     - action: utter_greet
     - intent: give_competition
     - action: utter_which_api
     - intent: give_api_section
-    # DE AQUÍ PARA ARRIBA SE REPITE ENTERO (se podría usar checkpoint)
+    # checkpoint option could be used to reduce story length
     - slot_was_set:
       - api_section: Standings
     - action: standings_form
@@ -34,12 +36,6 @@ stories:
     - active_loop: null
     # The actions we want to run when the form is submitted.
     - action: action_return_requested_standings
-#    - slot_was_set:
-#      - competition: null
-#    - slot_was_set:
-#      - season: null
-#    - slot_was_set:
-#      - round: null
 
 #- story: standings_path (HAPPY path - v1) - OLD
 #  steps:
@@ -96,14 +92,14 @@ stories:
 
 - story: team_stats_all_seasons_path (happy path - v1)
   steps:
-    - intent: start
+    # - intent: start
     - action: utter_iamabot
     - intent: greet
     - action: utter_greet
     - intent: give_competition
     - action: utter_which_api
     - intent: give_api_section
-    # DE AQUÍ PARA ARRIBA SE REPITE ENTERO (se podría usar checkpoint)
+    # checkpoint option could be used to reduce story length
     - slot_was_set:
       - api_section: Team Stats
     - action: utter_which_stat_type
@@ -124,14 +120,14 @@ stories:
 
 - story: team_stats_single_season_path (happy path - v1)
   steps:
-    - intent: start
+    # - intent: start
     - action: utter_iamabot
     - intent: greet
     - action: utter_greet
     - intent: give_competition
     - action: utter_which_api
     - intent: give_api_section
-    # DE AQUÍ PARA ARRIBA SE REPITE ENTERO (se podría usar checkpoint)
+    # # checkpoint option could be used to reduce story length
     - slot_was_set:
       - api_section: Team Stats
     - action: utter_which_stat_type
@@ -213,14 +209,14 @@ stories:
 
 - story: single_player_stats_all_seasons_path (happy path - v1)
   steps:
-    - intent: start
+    # - intent: start
     - action: utter_iamabot
     - intent: greet
     - action: utter_greet
     - intent: give_competition
     - action: utter_which_api
     - intent: give_api_section
-    # DE AQUÍ PARA ARRIBA SE REPITE ENTERO (se podría usar checkpoint)
+    # checkpoint option could be used to reduce story length
     - slot_was_set:
       - api_section: Player Stats
     - action: utter_which_stat_type
@@ -245,14 +241,14 @@ stories:
 
 - story: leaders_player_stats_all_seasons_path (happy path - v1)
   steps:
-    - intent: start
+    # - intent: start
     - action: utter_iamabot
     - intent: greet
     - action: utter_greet
     - intent: give_competition
     - action: utter_which_api
     - intent: give_api_section
-    # DE AQUÍ PARA ARRIBA SE REPITE ENTERO (se podría usar checkpoint)
+    # checkpoint option could be used to reduce story length
     - slot_was_set:
       - api_section: Player Stats
     - action: utter_which_stat_type
@@ -285,7 +281,7 @@ stories:
 #    - intent: give_competition
 #    - action: utter_which_api
 #    - intent: give_api_section
-#    # DE AQUÍ PARA ARRIBA SE REPITE ENTERO (se podría usar checkpoint)
+#    # checkpoint option could be used to reduce story length
 #    - slot_was_set:
 #      - api_section: Player Stats
 #    - action: utter_which_stat_type
