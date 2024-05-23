@@ -167,7 +167,11 @@ also mistaken with the `utter_which_stat_type` action.
 - The rephrasing model may hallucinate, causing it to miss required slots or offer information about sections that
 have not been implemented, as shown in the example below (our chatbot should not offer the possibility to ask about
 the competition's history or the format).
-![Rephrasing Hallucination Example](docs/images/rephrasing_error_demo.jpeg)
+
+<div align="center">
+   <img src="docs/images/rephrasing_error_demo.jpeg" alt="Rephrasing Hallucination Example">
+</div>
+
 - Limited visualization and design features.
 - The number of stories might be limited.
 
