@@ -10,10 +10,10 @@
 > [Georgios Giasemidis](https://github.com/giasemidis).
 
 ## Table of Contents
-1. [Installation](#installation-📥)
-2. [Usage](#usage-🛠️)
-   1. [Start Chatting](#start-chatting-💬)
-   2. [Test and Evaluate Rasa Model](#test-and-evaluate-rasa-model-🧪)
+1. [Installation](#installation) 📥
+2. [Usage](#usage) 🛠️
+   1. [Start Chatting](#start-chatting) 💬
+   2. [Test and Evaluate Rasa Model](#test-and-evaluate-rasa-model) 🧪
 
 ## Installation 📥
 
