@@ -83,6 +83,7 @@ git clone https://github.com/julenfu21/EurolIAgueAssistant.git
    [Rasa Webpage - Rasa Pro License Key Request](https://rasa.com/rasa-pro-developer-edition-license-key-request/)
    section. After completing the steps, a message similar to the one below will be received with the Rasa Pro license
    key:
+
    ![Rasa License Mail Sample](docs/images/rasa_license_mail_sample.png)
    
    4. Set the `RASA_PRO_LICENSE` environment variable:
