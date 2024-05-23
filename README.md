@@ -1,7 +1,6 @@
 <div align="center">
-    <img src="docs/images/euroleague_eurocup_logo.png" alt="EuroLAIgue Assistant Logo">
+    <img src="docs/images/euroLAIgue_assistant_logo.png" alt="EuroLAIgue Assistant Logo">
 </div>
-<h1 align="center">EuroLAIgue Assistant</h1>
 
 > A chatbot developed using **Rasa** and **Python** to answer questions related to the Euroleague and Eurocup, 
 > leveraging the [euroleague_api](https://github.com/giasemidis/euroleague_api) by
@@ -12,9 +11,10 @@
 2. [Usage](#usage-) 🔨 ️
    1. [Start Chatting](#start-chatting-) 💬
    2. [Test and Evaluate Rasa Model](#test-and-evaluate-rasa-model-) 🧪
-3. [Limitations](#limitations-) ⚠️
-4. [Demo](#demo-) 🎥
-5. [Future Work](#future-work-) 🚀
+3. [Evaluation](#evaluation-) 📊
+4. [Limitations](#limitations-) ⛔
+5. [Demo](#demo-) 🎥
+6. [Future Work](#future-work-) 🚀
 
 ## Installation 📥
 
@@ -81,7 +81,7 @@ git clone https://github.com/julenfu21/EurolIAgueAssistant.git
    [Rasa Webpage - Rasa Pro License Key Request](https://rasa.com/rasa-pro-developer-edition-license-key-request/)
    section. After completing the steps, a message similar to the one below will be received with the Rasa Pro license
    key:
-   ![Rasa license mail sample](docs/images/rasa_license_mail_sample.png)
+   ![Rasa License Mail Sample](docs/images/rasa_license_mail_sample.png)
    
    4. Set the `RASA_PRO_LICENSE` environment variable:
       - Temporary:
@@ -122,22 +122,38 @@ rasa train
       ```
 
 ### Test and evaluate Rasa model 🧪
-
 Run the following command to test the model:
 
 ```shell
 rasa test --stories tests/test_stories.yml 
 ```
 
-## Limitations ⚠️
+## Evaluation 📊
+After testing the model the following charts are obtained:
+
+When it comes to the **intents** predicted by the Rasa model, the figure below shows that most of the time the
+prediction is correct. However, it can be observed that more than half of the times the `give_season` is confused with 
+the`give_round` intent.
+![Intent Confusion Matrix](results/intent_confusion_matrix.png)
+
+Regarding the **entities'** prediction, most of the predictions are correct, but once again the model struggles when 
+trying to identify a `season` entity, which 80% of the times is predicted as a `round` entity.
+![Entity Confusion Matrix](results/DIETClassifier_confusion_matrix.png)
+
+Finally, the actions to be performed by the chatbot are generally well predicted. Nonetheless, the model always fails
+to predict the `action_return_requested_player_stats_all` and instead predicts an `action_default_fallback` (this
+means that the model cannot identify an intent with enough confidence), and the `utter_which_player_stat_type` is
+also mistaken with the `utter_which_stat_type` action.
+![Action Confusion Matrix](results/story_confusion_matrix.png)
+
+## Limitations ⛔
 - **Euroleague-api** is still in development and may have some errors.
 - The API is extensive, making it challenging to implement every section.
 - Game schedules and data can vary between seasons.
 - The rephrasing model may hallucinate, causing it to miss required slots or offer information about sections that
 have not been implemented, as shown in the example below (our chatbot should not offer the possibility to ask about
 the competition's history or the format).
-![Rephrasing hallucination example](docs/images/rephrasing_error_demo.jpeg)
-- Stories can sometimes become inconsistent.
+![Rephrasing Hallucination Example](docs/images/rephrasing_error_demo.jpeg)
 - Limited visualization and design features.
 - The number of stories might be limited.
 
