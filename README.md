@@ -49,7 +49,7 @@ git clone https://github.com/julenfu21/EurolIAgueAssistant.git
       .\venv\Scripts\activate
       ```
      
-#### Using `conda`
+#### Using `conda`:
    1. Move to the project directory: 
    ```shell
    cd EurolIAgueAssistant
@@ -66,7 +66,7 @@ git clone https://github.com/julenfu21/EurolIAgueAssistant.git
    ``` 
 
 ### 3. Install and Set Up Rasa Package
-   1. Add the Rasa package repository to the `pip.conf` file so that *pip* can locate the `rasa-pro` package:
+   1. Add the Rasa package repository to the `pip.conf` file so that **pip** can locate the `rasa-pro` package:
    ```shell
    cat <<EOF >> venv/pip.conf
    [global]
@@ -79,7 +79,7 @@ git clone https://github.com/julenfu21/EurolIAgueAssistant.git
    pip install rasa-pro
    ```   
 
-   3. Obtain a Rasa Pro license key following the instructions at 
+   3. Obtain a Rasa Pro license key following the instructions at the 
    [Rasa Webpage - Rasa Pro License Key Request](https://rasa.com/rasa-pro-developer-edition-license-key-request/)
    section. After completing the steps, a message similar to the one below will be received with the Rasa Pro license
    key:
@@ -109,7 +109,7 @@ git clone https://github.com/julenfu21/EurolIAgueAssistant.git
 rasa train
 ```
 
-2. Test the Rasa model (opening 2 different terminals)
+2. Test the Rasa model (opening 2 different terminals):
    1. In the first terminal, initialize the action server (necessary to run **custom actions**):
    ```shell
    rasa run actions
