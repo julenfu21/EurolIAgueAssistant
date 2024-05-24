@@ -184,6 +184,14 @@ https://github.com/julenfu21/EurolIAgueAssistant/assets/71083472/5e1b2234-503f-4
 
 https://github.com/julenfu21/EurolIAgueAssistant/assets/71083472/a79a4db0-9d27-4c78-9ca5-61f04e0eb003
 
+The app was forked from https://github.com/ShashankSinha98/RASA-BOT-Android, and it is included in the repository.
+
+However, the server is connected to our ngrok server, so it won't work unless we turn it on or you write your own server in "app/kotlin+java/util/Constants":
+
+```
+val NGROCK_URL = "your_url"
+```
+
 
 
 ## Future Work 🚀
