@@ -9,9 +9,6 @@ intents:
   - give_api_section
   - give_stat_type
   - give_player_stat_type
-#  - request_standings_info
-#  - request_team_stats_info
-  # - request_...
   - give_season
   - give_round
   - give_team
@@ -49,7 +46,6 @@ actions:
 
 
 slots:
-
   competition:
     type: text
     # influence_conversation: true
@@ -227,53 +223,14 @@ slots:
           - active_loop: leaders_stats_all_form
 
 
-
-
-#  name:
-#    type: text
-#    mappings:
-#      - type: from_entity
-#        entity: name
-#
-#  amount:
-#    type: text
-#    mappings:
-#      - type: from_entity
-#        entity: amount
-#
-#  home_team:
-#    type: text
-#    influence_conversation: true
-#    mappings:
-#      - type: from_entity
-#        entity: home_team
-#        # To change the slot value just when the form is active (avoid changing when unnecessary)
-#        conditions:
-#        - active_loop: game_metadata_form
-#
-#  away_team:
-#    type: text
-#    influence_conversation: true
-#    mappings:
-#      - type: from_entity
-#        entity: away_team
-#        conditions:
-#        - active_loop: game_metadata_form
-
-
 forms:
   standings_form:
-    # "If you do not want any of the required slots of a form to be filled when the intent is one from the list"
-    # ignored_intents:
-    # intent_1
     required_slots:
-      # - competition
       - season
       - round
   
   team_stats_all_form:
     required_slots:
-      # - team_stats_type
       - team
 
   team_stats_single_season_form:
@@ -315,12 +272,10 @@ responses:
   utter_ask_leaders_stats_all_form_mode:
   - text: "Do you want to know the Accumulated stats or the PerGame stats? **Limitation**: API has some errors and it always outputs PerGame stats leaders."
 
-  # utter_season:
   # utter_ask_<form_name>_<slot_name>
   utter_ask_standings_form_season:
   - text: "Which season do you want to know about? Just write the year the season starts. For example, 2023 for the last season."
 
-  # utter_round:
   # utter_ask_<form_name>_<slot_name>
   utter_ask_standings_form_round:
   - text: "Which round do you want to know about? **Limitation**: Depending on the season and competition, the number of rounds may vary."
@@ -328,7 +283,6 @@ responses:
   utter_ask_player_stats_all_form_player:
   - text: "Which player do you want the stats of? Just in {competition}."
 
-  # utter_team:
   # utter_ask_<form_name>_<slot_name>
   utter_ask_team_stats_all_form_team:
   - text: "Which team do you want the stats of?"

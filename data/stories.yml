@@ -37,29 +37,6 @@ stories:
     # The actions we want to run when the form is submitted.
     - action: action_return_requested_standings
 
-#- story: standings_path (HAPPY path - v1) - OLD
-#  steps:
-#    - intent: greet
-#    - action: utter_greet
-#    - intent: give_competition
-##    - slot_was_set:
-##      - competition: Euroleague
-#    - action: utter_which_api
-#    - intent: request_standings_info
-#    - action: standings_form
-#      # The form should be activated after standings_form was run.
-#    - active_loop: standings_form
-#    - slot_was_set:
-#      - requested_slot: season
-#    - slot_was_set:
-#      - requested_slot: round
-#    # Form is deactivated
-#    - slot_was_set:
-#      - requested_slot: null
-#    - active_loop: null
-#    # The actions we want to run when the form is submitted.
-#    - action: action_return_requested_standings
-
 #- story: standings_path (UNHAPPY PATH - v1.1 - user is asked to interrupt the form and does not want to continue)
 #  steps:
 #    - intent: greet
@@ -148,58 +125,6 @@ stories:
     # The actions we want to run when the form is submitted
     - action: action_return_requested_team_stats_single_season
 
-#- story: team_stats_all_seasons_path (happy path - v1)
-#  steps:
-#    - intent: greet
-#    - action: utter_greet
-#    - intent: give_competition
-#    - action: utter_which_api
-#    - intent: request_team_stats_info
-#    - action: team_stats_all_form
-#    # The form should be activated after team_stats_all_form was run.
-#    - active_loop: team_stats_all_form
-#    - slot_was_set:
-#      - requested_slot: team
-#    # Form is deactivated
-#    - slot_was_set:
-#      - requested_slot: null
-#    - active_loop: null
-#    # The actions we want to run when the form is submitted
-#    - action: action_return_requested_team_stats_all
-
-
-
-# LO DEJO POR SI ACASO
-#- story: team_stats_all_seasons_path
-#  steps:
-#    - intent: greet
-#    - action: utter_greet
-#    - active_loop: team_stats_all_form
-#
-#    - intent: give_competition
-#    - slot_was_set:
-#      - requested_slot: competition
-#    - action: utter_which_api
-#    - intent: give_team_stats
-#    # - intent: give_api
-#    # - slot_was_set:
-#    #   - requested_slot: api_slot
-#    - action: utter_team_stats_type
-#    # - intent: give_team_stats_type
-#    # - slot_was_set:
-#    #   - requested_slot: team_stats_type
-#    - intent: give_team_stats_all
-#
-#    - action: action_return_teams_available
-#    - action: utter_team
-#    - intent: give_team
-#    - slot_was_set:
-#      - requested_slot: team
-#
-#    - slot_was_set:
-#      - requested_slot: null
-#    - active_loop: null
-#    - action: action_return_team_stats_all
 
 ############################
 #                          #

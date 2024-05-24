@@ -42,11 +42,6 @@ class ActionReturnRequestedStandings(Action):
             text=f"Standings for round {round_number} of the {season} season of the {competition_full}: \n {df2}"
         )
 
-        # return [
-        #     SlotSet("competition", None),
-        #     SlotSet("season", None),
-        #     SlotSet("round", None)
-        # ]
         return [AllSlotsReset()]
 
 
@@ -116,7 +111,6 @@ class ActionReturnRequestedTeamStatsAll(Action):
                  f"Turnovers: {turnovers} \n Pir: {pir}"
         )
 
-        # return [SlotSet("team", None)]
         return [AllSlotsReset()]
 
 
@@ -199,7 +193,6 @@ class ActionReturnRequestedPlayerStatsAll(Action):
         player_stats = PlayerStats(competition=competition)
         df = player_stats.get_player_stats_all_seasons(endpoint='traditional')
 
-        # Poner más stats? Pedir cuales quiere el usuario?
         desired_row = df[df['player.name'] == formatted_name]
         games_played = desired_row['gamesPlayed'].iloc[0]
         points = desired_row['pointsScored'].iloc[0]
@@ -213,8 +206,6 @@ class ActionReturnRequestedPlayerStatsAll(Action):
         teams_played_for_string = ', '.join(teams_played_for)
 
         if len(teams_played_for) == 1:
-            
-
             dispatcher.utter_message(
                 text=f"Player stats per game for {player_name} in {teams_played_for_string}: \n Games played: {games_played} \n Points: {points} \n "
                     f"Assists: {assists} \n Rebounds: {rebounds} \n Steals: {steals} \n Blocks: {blocks} \n "
@@ -227,7 +218,6 @@ class ActionReturnRequestedPlayerStatsAll(Action):
                     f"Turnovers: {turnovers} \n Pir: {pir}"
             )
 
-        # return [SlotSet("player", None)]
         return [AllSlotsReset()]
 
 
@@ -267,7 +257,6 @@ class ActionReturnRequestedPlayerStatsSingleSeason(Action):
             statistic_mode="PerGame"
         )
 
-        # Poner más stats? Pedir cuales quiere el usuario?
         desired_row = df[df['player.name'] == formatted_name]
         games_played = desired_row['gamesPlayed'].iloc[0]
         points = desired_row['pointsScored'].iloc[0]
@@ -286,9 +275,8 @@ class ActionReturnRequestedPlayerStatsSingleSeason(Action):
                  f"Turnovers: {turnovers} \n Pir: {pir}"
         )
 
-        # return [SlotSet("player", None)]
         return [AllSlotsReset()]
-    
+
 class ActionReturnAvailableLeaders(Action):
 
     def name(self) -> Text:
@@ -300,7 +288,7 @@ class ActionReturnAvailableLeaders(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
-        
+
         stats = ['Valuation', 'Score', 'TotalRebounds', 'OffensiveRebounds', 'Assistances', 'Steals', 'BlocksFavour', 'BlocksAgainst', 'Turnovers', 'FoulsReceived', 'FoulsCommited', 'FreeThrowsMade', 'FreeThrowsAttempted', 'FreeThrowsPercent', 'FieldGoalsMade2', 'FieldGoalsAttempted2', 'FieldGoals2Percent', 'FieldGoalsMade3', 'FieldGoalsAttempted3', 'FieldGoals3Percent', 'FieldGoalsMadeTotal', 'FieldGoalsAttemptedTotal', 'FieldGoalsPercent', 'AccuracyMade', 'AccuracyAttempted', 'AccuracyPercent', 'AssitancesTurnoversRation', 'GamesPlayed', 'GamesStarted', 'TimePlayed', 'Contras', 'Dunks', 'OffensiveReboundPercentage', 'DefensiveReboundPercentage', 'ReboundPercentage', 'EffectiveFeildGoalPercentage', 'TrueShootingPercentage', 'AssistRatio', 'TurnoverRatio', 'FieldGoals2AttemptedRatio', 'FieldGoals3AttemptedRatio', 'FreeThrowRate', 'Possessions', 'GamesWon', 'GamesLost', 'DoubleDoubles', 'TripleDoubles', 'FieldGoalsAttempted2Share', 'FieldGoalsAttempted3Share', 'FreeThrowsAttemptedShare', 'FieldGoalsMade2Share', 'FieldGoalsMade3Share', 'FreeThrowsMadeShare', 'PointsMade2Rate', 'PointsMade3Rate', 'PointsMadeFreeThrowsRate', 'PointsAttempted2Rate', 'PointsAttempted3Rate', 'Age']
         stats_str = ', '.join(stats)
         dispatcher.utter_message(text=f"Categories available: {stats_str}")
@@ -321,7 +309,6 @@ class ActionReturnRequestedLeadersStatsAll(Action):
 
         category = tracker.get_slot(key="category")
         mode = tracker.get_slot(key="mode")
-        
 
         competition = tracker.get_slot(key="competition")
         if competition == 'Euroleague':
@@ -333,8 +320,6 @@ class ActionReturnRequestedLeadersStatsAll(Action):
         df = player_stats.get_player_stats_leaders_all_seasons(stat_category = category, statistic_mode = "PerGame", top_n = 10)
 
         leaders = df.drop(columns=['rank', 'playerCode', 'playerAbbreviatedName', 'imageUrl', 'teamImageUrl', 'timePlayed', 'secondsPlayed', 'possessions', 'clubCodes', 'abbreviatedClubNames', 'tvCodes', 'clubSeasonCodes'])
-
-        # Poner más stats? Pedir cuales quiere el usuario?
 
         dispatcher.utter_message(
             text=f"Top 5 players in {category} {mode}: \n {leaders}"

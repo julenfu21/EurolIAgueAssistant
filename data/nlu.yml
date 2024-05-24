@@ -169,39 +169,6 @@ nlu:
     - I want the [PerGame](mode) stats mode
     - I want the [Accumulated](mode) stats mode
 
-# - intent: give_api
-#   examples: |
-#     - [Game Stats](api_slot)
-#     - [Standings](api_slot)
-#     - [Player Stats](api_slot)
-#     - [Team Stats](api_slot)
-#     - I want to know about the [Standings](api_slot)
-#     - I want to know about the [Game Stats](api_slot)
-#     - I want to know about the [Player Stats](api_slot)
-#     - I want to know about the [Team Stats](api_slot)
-#     - Tell me about the [Standings](api_slot)
-#     - Tell me about the [Game Stats](api_slot)
-#     - Tell me about the [Player Stats](api_slot)
-#     - Tell me about the [Team Stats](api_slot)
-#     - Check the [Standings](api_slot)
-#     - Check the [Game Stats](api_slot)
-#     - Check the [Player Stats](api_slot)
-#     - Check the [Team Stats](api_slot)
-
-#- intent: request_standings_info
-#  examples: |
-#    - Standings
-#    - I want to know about the Standings
-#    - Tell me about the Standings
-#    - Check the Standings
-
-#- intent: request_team_stats_info
-#  examples: |
-#    - Team Stats
-#    - I want to know about the Team Stats
-#    - Tell me about the Team Stats
-#    - Check the Team Stats
-
 - intent: give_season
   examples: |
     - [2023](season)
@@ -219,17 +186,6 @@ nlu:
     - [34](round)
     - I want to know about round [5](round)
     - Tell me about round [7](round)
-
-# - intent: give_team_stats_type
-#   examples: |
-#     - All seasons
-
-#- intent: give_team_stats_all
-#  examples: |
-#    - All seasons
-#    - All seasons, please
-#    - I want to know about all seasons
-#    - Tell me about all seasons
 
 - intent: give_team
   examples: |
